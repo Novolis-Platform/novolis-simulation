@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.View</RootNamespace>
+    <AssemblyName>Novolis.Simulation.View</AssemblyName>
+    <PackageId>Novolis.Simulation.View</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>View controllers and poses for games, CAD, and simulation observers.</Description>
+  </PropertyGroup>
+</Project>

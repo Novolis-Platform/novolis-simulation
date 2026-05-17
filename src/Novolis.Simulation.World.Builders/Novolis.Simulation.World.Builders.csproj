@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.World.Builders</RootNamespace>
+    <AssemblyName>Novolis.Simulation.World.Builders</AssemblyName>
+    <PackageId>Novolis.Simulation.World.Builders</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Build physics worlds from occupancy grids.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj" />
+    <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Numerics\Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>

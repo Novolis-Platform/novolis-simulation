@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.World</RootNamespace>
+    <AssemblyName>Novolis.Simulation.World</AssemblyName>
+    <PackageId>Novolis.Simulation.World</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Planar occupancy grids, LOS, and collision queries on XZ (+Y up).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj" />
+  </ItemGroup>
+</Project>
