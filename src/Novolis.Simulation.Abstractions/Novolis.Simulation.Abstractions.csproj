@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Abstractions</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Abstractions</AssemblyName>
+    <PackageId>Novolis.Simulation.Abstractions</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Simulation orchestration contracts (systems, state, objects).</Description>
+  </PropertyGroup>
+</Project>

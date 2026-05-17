@@ -1,7 +1,7 @@
 using System.Numerics;
 using Novolis.Math.Arrays;
+using Novolis.Math.Geometry;
 using Novolis.Physics.Abstractions;
-using Novolis.Physics.Numerics;
 using Novolis.Simulation.World;
 
 namespace Novolis.Simulation.Kinematics;
@@ -10,14 +10,14 @@ namespace Novolis.Simulation.Kinematics;
 public static class PlanarAgent
 {
     /// <summary>Moves using grid collision when <paramref name="staticWorld"/> is null; otherwise BVH sweep.</summary>
-    public static Vector2 Move(
+    public static Vector3 Move(
         DenseGrid<byte> walls,
-        Vector2 position,
-        Vector2 delta,
+        Vector3 position,
+        Vector3 delta,
         float radius,
         float cellSize,
         IStaticWorld? staticWorld = null,
-        double sweepCenterY = 0.9)
+        float sweepCenterY = 0.9f)
     {
         if (delta.LengthSquared() < 1e-12f)
             return position;
@@ -28,35 +28,34 @@ public static class PlanarAgent
         return SweepMove(staticWorld, position, delta, radius, sweepCenterY);
     }
 
-    private static Vector2 SweepMove(
+    private static Vector3 SweepMove(
         IStaticWorld world,
-        Vector2 position,
-        Vector2 delta,
-        double radius,
-        double centerY)
+        Vector3 position,
+        Vector3 delta,
+        float radius,
+        float centerY)
     {
-        var pos = new Vector3d(position.X, centerY, position.Y);
-        var dx = new Vector3d(delta.X, 0, 0);
-        if (System.Math.Abs(dx.X) > 1e-12)
+        var pos = new Vector3(position.X, centerY, position.Z);
+        var dx = new Vector3(delta.X, 0f, 0f);
+        if (MathF.Abs(dx.X) > 1e-6f)
         {
-            var sphere = new Sphere3d(pos, radius);
-            if (world.SweepSphere(sphere, dx, out var hit))
-                pos = new Vector3d(pos.X + hit.Distance * System.Math.Sign(dx.X), pos.Y, pos.Z);
+            var sphere = new Sphere3(pos, radius);
+            if (world.SweepSphere(in sphere, dx, out var hit))
+                pos = new Vector3(pos.X + (float)hit.Distance * MathF.Sign(dx.X), pos.Y, pos.Z);
             else
                 pos += dx;
         }
 
-        var dz = new Vector3d(0, 0, delta.Y);
-        if (System.Math.Abs(dz.Z) > 1e-12)
+        var dz = new Vector3(0f, 0f, delta.Z);
+        if (MathF.Abs(dz.Z) > 1e-6f)
         {
-            var sphere = new Sphere3d(pos, radius);
-            if (world.SweepSphere(sphere, dz, out var hit))
-                pos = new Vector3d(pos.X, pos.Y, pos.Z + hit.Distance * System.Math.Sign(dz.Z));
+            var sphere = new Sphere3(pos, radius);
+            if (world.SweepSphere(in sphere, dz, out var hit))
+                pos = new Vector3(pos.X, pos.Y, pos.Z + (float)hit.Distance * MathF.Sign(dz.Z));
             else
                 pos += dz;
         }
 
-        return new Vector2((float)pos.X, (float)pos.Z);
+        return new Vector3(pos.X, 0f, pos.Z);
     }
 }
-

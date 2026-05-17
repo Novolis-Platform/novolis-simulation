@@ -38,6 +38,7 @@
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true' Or '$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\novolis-governance\build\Novolis.StackAnalyzers.props" Condition="Exists('$(MSBuildThisFileDirectory)..\novolis-governance\build\Novolis.StackAnalyzers.props')" />
   <ItemGroup Label="SourceLink">
     <PackageReference Include="Microsoft.SourceLink.GitHub">
       <PrivateAssets>all</PrivateAssets>

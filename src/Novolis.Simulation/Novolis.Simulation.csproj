@@ -8,6 +8,7 @@
     <Description>Simulation composition stack — worlds, views, and kinematics for Novolis apps.</Description>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Novolis.Simulation.Abstractions\Novolis.Simulation.Abstractions.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.View\Novolis.Simulation.View.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj" />

@@ -1,5 +1,5 @@
+using System.Numerics;
 using Novolis.Physics.Collision.Simple;
-using Novolis.Physics.Numerics;
 
 namespace Novolis.Simulation.World.Builders;
 
@@ -10,10 +10,10 @@ public static class OccupancyColumnMeshBuilder
         uint width,
         uint height,
         ReadOnlySpan<byte> cells,
-        double cellSize = 1.0,
-        double wallHeight = 2.0)
+        float cellSize = 1f,
+        float wallHeight = 2f)
     {
-        var verts = new List<Vector3d>();
+        var verts = new List<Vector3>();
         var tris = new List<int>();
 
         for (var y = 0u; y < height; y++)
@@ -23,10 +23,10 @@ public static class OccupancyColumnMeshBuilder
             if (index >= cells.Length || cells[index] == 0)
                 continue;
 
-            var cx = (x + 0.5) * cellSize;
-            var cz = (y + 0.5) * cellSize;
-            var h = wallHeight * 0.5;
-            var hx = cellSize * 0.5;
+            var cx = (x + 0.5f) * cellSize;
+            var cz = (y + 0.5f) * cellSize;
+            var h = wallHeight * 0.5f;
+            var hx = cellSize * 0.5f;
             AddBox(verts, tris, cx, h, cz, hx, h, hx);
         }
 
@@ -34,14 +34,14 @@ public static class OccupancyColumnMeshBuilder
     }
 
     private static void AddBox(
-        List<Vector3d> verts,
+        List<Vector3> verts,
         List<int> tris,
-        double cx,
-        double cy,
-        double cz,
-        double hx,
-        double hy,
-        double hz)
+        float cx,
+        float cy,
+        float cz,
+        float hx,
+        float hy,
+        float hz)
     {
         var x0 = cx - hx;
         var x1 = cx + hx;
@@ -58,7 +58,7 @@ public static class OccupancyColumnMeshBuilder
         AddQuad(verts, tris, new(x0, y1, z0), new(x1, y1, z0), new(x1, y1, z1), new(x0, y1, z1));
     }
 
-    private static void AddQuad(List<Vector3d> verts, List<int> tris, Vector3d a, Vector3d b, Vector3d c, Vector3d d)
+    private static void AddQuad(List<Vector3> verts, List<int> tris, Vector3 a, Vector3 b, Vector3 c, Vector3 d)
     {
         var o = verts.Count;
         verts.Add(a);

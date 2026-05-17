@@ -11,21 +11,21 @@ public static class PlanarOccupancy
     /// <summary>
     /// Moves <paramref name="position"/> by <paramref name="delta"/> (XZ), sliding along walls.
     /// </summary>
-    public static Vector2 TryMove(
+    public static Vector3 TryMove(
         DenseGrid<byte> map,
-        Vector2 position,
-        Vector2 delta,
+        Vector3 position,
+        Vector3 delta,
         float radius,
         float cellSize = 1f)
     {
         if (delta.LengthSquared() < 1e-12f)
             return position;
 
-        var next = position + new Vector2(delta.X, 0f);
+        var next = position + new Vector3(delta.X, 0f, 0f);
         if (!OverlapsWall(map, next, radius, cellSize))
             position = next;
 
-        next = position + new Vector2(0f, delta.Y);
+        next = position + new Vector3(0f, 0f, delta.Z);
         if (!OverlapsWall(map, next, radius, cellSize))
             position = next;
 
@@ -33,12 +33,12 @@ public static class PlanarOccupancy
     }
 
     /// <summary>Returns true when the circle at <paramref name="position"/> overlaps a blocked cell.</summary>
-    public static bool OverlapsWall(DenseGrid<byte> map, Vector2 position, float radius, float cellSize = 1f)
+    public static bool OverlapsWall(DenseGrid<byte> map, Vector3 position, float radius, float cellSize = 1f)
     {
         var minX = (int)MathF.Floor((position.X - radius) / cellSize);
         var maxX = (int)MathF.Floor((position.X + radius) / cellSize);
-        var minZ = (int)MathF.Floor((position.Y - radius) / cellSize);
-        var maxZ = (int)MathF.Floor((position.Y + radius) / cellSize);
+        var minZ = (int)MathF.Floor((position.Z - radius) / cellSize);
+        var maxZ = (int)MathF.Floor((position.Z + radius) / cellSize);
 
         for (var z = minZ; z <= maxZ; z++)
         for (var x = minX; x <= maxX; x++)
@@ -55,9 +55,9 @@ public static class PlanarOccupancy
             var cellMaxZ = cellMinZ + cellSize;
 
             var closestX = System.Math.Clamp(position.X, cellMinX, cellMaxX);
-            var closestZ = System.Math.Clamp(position.Y, cellMinZ, cellMaxZ);
+            var closestZ = System.Math.Clamp(position.Z, cellMinZ, cellMaxZ);
             var dx = position.X - closestX;
-            var dz = position.Y - closestZ;
+            var dz = position.Z - closestZ;
             if (dx * dx + dz * dz < radius * radius)
                 return true;
         }
@@ -68,9 +68,9 @@ public static class PlanarOccupancy
     /// <summary>
     /// Resolves circle overlap with blocked cells by pushing <paramref name="position"/> toward open floor.
     /// </summary>
-    public static Vector2 PushOutOfWalls(
+    public static Vector3 PushOutOfWalls(
         DenseGrid<byte> map,
-        Vector2 position,
+        Vector3 position,
         float radius,
         float cellSize = 1f,
         int maxIterations = 8)
@@ -81,11 +81,11 @@ public static class PlanarOccupancy
             if (!OverlapsWall(map, pos, radius, cellSize))
                 return pos;
 
-            var push = Vector2.Zero;
+            var push = Vector3.Zero;
             var minX = (int)MathF.Floor((pos.X - radius) / cellSize);
             var maxX = (int)MathF.Floor((pos.X + radius) / cellSize);
-            var minZ = (int)MathF.Floor((pos.Y - radius) / cellSize);
-            var maxZ = (int)MathF.Floor((pos.Y + radius) / cellSize);
+            var minZ = (int)MathF.Floor((pos.Z - radius) / cellSize);
+            var maxZ = (int)MathF.Floor((pos.Z + radius) / cellSize);
 
             for (var z = minZ; z <= maxZ; z++)
             for (var x = minX; x <= maxX; x++)
@@ -99,9 +99,9 @@ public static class PlanarOccupancy
                 var cellMaxZ = cellMinZ + cellSize;
 
                 var closestX = System.Math.Clamp(pos.X, cellMinX, cellMaxX);
-                var closestZ = System.Math.Clamp(pos.Y, cellMinZ, cellMaxZ);
+                var closestZ = System.Math.Clamp(pos.Z, cellMinZ, cellMaxZ);
                 var dx = pos.X - closestX;
-                var dz = pos.Y - closestZ;
+                var dz = pos.Z - closestZ;
                 var distSq = dx * dx + dz * dz;
                 float pushDistance;
                 if (distSq < 1e-10f)
@@ -125,7 +125,7 @@ public static class PlanarOccupancy
                     dz /= dist;
                 }
 
-                push += new Vector2(dx, dz) * pushDistance;
+                push += new Vector3(dx, 0f, dz) * pushDistance;
             }
 
             if (push.LengthSquared() < 1e-10f)
@@ -142,8 +142,8 @@ public static class PlanarOccupancy
     /// </summary>
     public static bool TryRaycastWall(
         DenseGrid<byte> map,
-        Vector2 origin,
-        Vector2 direction,
+        Vector3 origin,
+        Vector3 direction,
         float maxDistance,
         float cellSize,
         out float hitDistance)
@@ -151,7 +151,7 @@ public static class PlanarOccupancy
         hitDistance = 0f;
 
         var dx = direction.X;
-        var dz = direction.Y;
+        var dz = direction.Z;
         var lenSq = dx * dx + dz * dz;
         if (lenSq < 1e-10f)
             return false;
@@ -161,14 +161,14 @@ public static class PlanarOccupancy
         dz *= invLen;
 
         var startCellX = (int)MathF.Floor(origin.X / cellSize);
-        var startCellZ = (int)MathF.Floor(origin.Y / cellSize);
+        var startCellZ = (int)MathF.Floor(origin.Z / cellSize);
         var step = cellSize * 0.25f;
         var dist = step;
 
         while (dist <= maxDistance)
         {
             var px = origin.X + dx * dist;
-            var pz = origin.Y + dz * dist;
+            var pz = origin.Z + dz * dist;
             var cx = (int)MathF.Floor(px / cellSize);
             var cz = (int)MathF.Floor(pz / cellSize);
             if ((cx != startCellX || cz != startCellZ) && IsCellBlocked(map, cx, cz))
@@ -190,15 +190,15 @@ public static class PlanarOccupancy
     /// </summary>
     public static bool HasLineOfSight(
         DenseGrid<byte> map,
-        Vector2 from,
-        Vector2 to,
+        Vector3 from,
+        Vector3 to,
         float cellSize = 1f,
         float clearanceRadius = 0f)
     {
         var startX = from.X / cellSize;
-        var startZ = from.Y / cellSize;
+        var startZ = from.Z / cellSize;
         var endX = to.X / cellSize;
-        var endZ = to.Y / cellSize;
+        var endZ = to.Z / cellSize;
 
         var cellX = (int)MathF.Floor(startX);
         var cellZ = (int)MathF.Floor(startZ);
@@ -257,8 +257,8 @@ public static class PlanarOccupancy
 
     private static bool ClearanceBlocked(
         DenseGrid<byte> map,
-        Vector2 from,
-        Vector2 to,
+        Vector3 from,
+        Vector3 to,
         int pathCellX,
         int pathCellZ,
         float cellSize,
@@ -275,7 +275,7 @@ public static class PlanarOccupancy
             if (!IsCellBlocked(map, x, z))
                 continue;
 
-            var center = new Vector2((x + 0.5f) * cellSize, (z + 0.5f) * cellSize);
+            var center = new Vector3((x + 0.5f) * cellSize, 0f, (z + 0.5f) * cellSize);
             if (DistancePointToSegment(center, from, to) <= clearanceRadius + cellSize * 0.5f)
                 return true;
         }
@@ -283,16 +283,16 @@ public static class PlanarOccupancy
         return false;
     }
 
-    private static float DistancePointToSegment(Vector2 point, Vector2 a, Vector2 b)
+    private static float DistancePointToSegment(Vector3 point, Vector3 a, Vector3 b)
     {
         var ab = b - a;
         var lenSq = ab.LengthSquared();
         if (lenSq < 1e-12f)
-            return Vector2.Distance(point, a);
+            return Vector3.Distance(point, a);
 
-        var t = System.Math.Clamp(Vector2.Dot(point - a, ab) / lenSq, 0f, 1f);
+        var t = System.Math.Clamp(Vector3.Dot(point - a, ab) / lenSq, 0f, 1f);
         var closest = a + ab * t;
-        return Vector2.Distance(point, closest);
+        return Vector3.Distance(point, closest);
     }
 
     private static bool TryGetEscapeDirection(

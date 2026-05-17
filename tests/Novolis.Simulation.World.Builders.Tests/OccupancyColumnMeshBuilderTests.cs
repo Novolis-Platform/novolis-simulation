@@ -1,4 +1,5 @@
-using Novolis.Physics.Numerics;
+using System.Numerics;
+using Novolis.Math.Geometry;
 using Novolis.Simulation.World.Builders;
 using TUnit.Core;
 
@@ -12,7 +13,7 @@ public sealed class OccupancyColumnMeshBuilderTests
         Span<byte> cells = [0, 1, 0, 1];
         var world = OccupancyColumnMeshBuilder.FromWallGrid(2, 2, cells);
 
-        var ray = new Ray3d(new Vector3d(1.5, 1.0, -1.0), new Vector3d(0, 0, 1).Normalized());
+        var ray = new Ray3(new Vector3(1.5f, 1f, -1f), Vector3.Normalize(new Vector3(0f, 0f, 1f)));
         var hit = world.Raycast(in ray, maxDistance: 10.0, out var info);
 
         await Assert.That(hit).IsTrue();
