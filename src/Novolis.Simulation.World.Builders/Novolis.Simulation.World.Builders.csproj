@@ -11,5 +11,6 @@
     <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj" />
     <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Geometry\Novolis.Math.Geometry.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
+    <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj" />
   </ItemGroup>
 </Project>

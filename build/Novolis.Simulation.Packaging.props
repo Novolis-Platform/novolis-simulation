@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="Novolis.Simulation NuGet metadata">
-    <NovolisSimulationVersion Condition="'$(NovolisSimulationVersion)' == ''">0.3.0-local</NovolisSimulationVersion>
+    <NovolisSimulationVersion Condition="'$(NovolisSimulationVersion)' == ''">0.4.0-local</NovolisSimulationVersion>
     <Version>$(NovolisSimulationVersion)</Version>
     <PackageTags>simulation;world;camera;occupancy;kinematics</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

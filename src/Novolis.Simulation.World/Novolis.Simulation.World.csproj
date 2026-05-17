@@ -9,5 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj" />
+    <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj" />
   </ItemGroup>
 </Project>

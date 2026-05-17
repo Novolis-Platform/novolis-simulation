@@ -138,6 +138,48 @@ public static class PlanarOccupancy
     }
 
     /// <summary>
+    /// Tests whether a look ray hits a columnar agent on the XZ plane (ignores pitch/Y).
+    /// </summary>
+    public static bool TryRaycastDisc(
+        Vector3 rayOrigin,
+        Vector3 rayDirection,
+        Vector3 targetPosition,
+        float maxRange,
+        float hitRadius,
+        out PlanarDiscHit hit)
+    {
+        hit = default;
+        var ox = rayOrigin.X;
+        var oz = rayOrigin.Z;
+        var dx = rayDirection.X;
+        var dz = rayDirection.Z;
+        var lenSq = dx * dx + dz * dz;
+        if (lenSq < 1e-8f)
+            return false;
+
+        var invLen = 1f / MathF.Sqrt(lenSq);
+        dx *= invLen;
+        dz *= invLen;
+
+        var ex = targetPosition.X;
+        var ez = targetPosition.Z;
+        var t = (ex - ox) * dx + (ez - oz) * dz;
+        if (t < 0.25f || t > maxRange)
+            return false;
+
+        var closestX = ox + dx * t;
+        var closestZ = oz + dz * t;
+        var missX = closestX - ex;
+        var missZ = closestZ - ez;
+        var missSq = missX * missX + missZ * missZ;
+        if (missSq > hitRadius * hitRadius)
+            return false;
+
+        hit = new PlanarDiscHit { DistanceAlongRay = t };
+        return true;
+    }
+
+    /// <summary>
     /// Casts a ray on the XZ plane and returns true when a blocked cell is hit before <paramref name="maxDistance"/>.
     /// </summary>
     public static bool TryRaycastWall(

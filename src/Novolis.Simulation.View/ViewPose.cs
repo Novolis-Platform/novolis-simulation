@@ -2,5 +2,22 @@ using System.Numerics;
 
 namespace Novolis.Simulation.View;
 
-/// <summary>Observer position and orientation for adapters to math or render cameras.</summary>
-public readonly record struct ViewPose(Vector3 Position, float Yaw, float Pitch);
+/// <summary>Observer pose for bridging to a host renderer at compose time.</summary>
+public readonly struct ViewPose
+{
+    public ViewPose(Vector3 position, Vector3 target, Vector3 up, float fieldOfViewDegrees)
+    {
+        Position = position;
+        Target = target;
+        Up = up;
+        FieldOfViewDegrees = fieldOfViewDegrees;
+    }
+
+    public Vector3 Position { get; }
+
+    public Vector3 Target { get; }
+
+    public Vector3 Up { get; }
+
+    public float FieldOfViewDegrees { get; }
+}
