@@ -1,5 +1,4 @@
 <Project>
-    <Import Project="build\version.props" Condition="Exists('build\version.props')" />
 <ItemGroup>
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.203" />
     <PackageVersion Include="Novolis.Math.Arrays" Version="2026.1.*-*" />
