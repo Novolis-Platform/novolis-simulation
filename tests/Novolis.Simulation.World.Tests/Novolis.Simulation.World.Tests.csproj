@@ -7,6 +7,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
-    <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj" />
+    <PackageReference Include="Novolis.Math.Arrays" />
   </ItemGroup>
 </Project>

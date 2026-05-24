@@ -9,8 +9,8 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
-    <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj" />
-    <ProjectReference Include="..\..\..\novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj" />
-    <ProjectReference Include="..\..\..\novolis-math\src\Novolis.Math.Geometry\Novolis.Math.Geometry.csproj" />
+    <PackageReference Include="Novolis.Math.Arrays" />
+    <PackageReference Include="Novolis.Physics.Abstractions" />
+    <PackageReference Include="Novolis.Math.Geometry" />
   </ItemGroup>
 </Project>
