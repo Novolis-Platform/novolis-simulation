@@ -1,4 +1,4 @@
-# Novolis.Simulation (meta-package)
+# Novolis.Simulation
 
 Installs the core simulation stack (world, view, kinematics, builders, abstractions) in one reference.
 
