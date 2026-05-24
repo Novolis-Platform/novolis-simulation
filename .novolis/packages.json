@@ -1,0 +1,59 @@
+{
+  "packages": {
+    "Novolis.Simulation.Abstractions": {
+      "project": "src/Novolis.Simulation.Abstractions/Novolis.Simulation.Abstractions.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Abstractions/**",
+        "Directory.Build.props",
+        "Directory.Packages.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation": {
+      "project": "src/Novolis.Simulation/Novolis.Simulation.csproj",
+      "paths": [
+        "src/Novolis.Simulation/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.Kinematics": {
+      "project": "src/Novolis.Simulation.Kinematics/Novolis.Simulation.Kinematics.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Kinematics/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.View": {
+      "project": "src/Novolis.Simulation.View/Novolis.Simulation.View.csproj",
+      "paths": [
+        "src/Novolis.Simulation.View/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.World": {
+      "project": "src/Novolis.Simulation.World/Novolis.Simulation.World.csproj",
+      "paths": [
+        "src/Novolis.Simulation.World/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.World.Builders": {
+      "project": "src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj",
+      "paths": [
+        "src/Novolis.Simulation.World.Builders/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    }
+  }
+}
