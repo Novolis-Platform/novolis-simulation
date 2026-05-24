@@ -39,7 +39,7 @@ public static class PlanarAgent
         var dx = new Vector3(delta.X, 0f, 0f);
         if (MathF.Abs(dx.X) > 1e-6f)
         {
-            var sphere = new Sphere3(pos, radius);
+            var sphere = new Sphere(pos, radius);
             if (world.SweepSphere(in sphere, dx, out var hit))
                 pos = new Vector3(pos.X + (float)hit.Distance * MathF.Sign(dx.X), pos.Y, pos.Z);
             else
@@ -49,7 +49,7 @@ public static class PlanarAgent
         var dz = new Vector3(0f, 0f, delta.Z);
         if (MathF.Abs(dz.Z) > 1e-6f)
         {
-            var sphere = new Sphere3(pos, radius);
+            var sphere = new Sphere(pos, radius);
             if (world.SweepSphere(in sphere, dz, out var hit))
                 pos = new Vector3(pos.X, pos.Y, pos.Z + (float)hit.Distance * MathF.Sign(dz.Z));
             else
