@@ -229,7 +229,7 @@ public sealed class DefaultCarSensorModelTests
         var r1 = _model.Read(_track, car1);
         var r2 = _model.Read(_track, car2);
 
-        await Assert.That(Math.Abs(r1.Values[7] - r2.Values[7])).IsGreaterThan(0.01);
+        await Assert.That(System.Math.Abs(r1.Values[7] - r2.Values[7])).IsGreaterThan(0.01);
     }
 
     [Test]

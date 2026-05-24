@@ -3,6 +3,7 @@
     <RootNamespace>Novolis.Simulation.Unit</RootNamespace>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <NovolisStackAnalyzers>false</NovolisStackAnalyzers>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Novolis.Math.Arrays" />
