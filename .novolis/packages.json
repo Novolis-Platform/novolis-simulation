@@ -54,6 +54,16 @@
         "build/**",
         "global.json"
       ]
+    },
+    "Novolis.Simulation.Racing": {
+      "project": "src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Racing/**",
+        "tests/Novolis.Simulation.Unit/Racing/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
     }
   }
 }

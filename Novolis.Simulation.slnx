@@ -6,10 +6,9 @@
     <Project Path="src/Novolis.Simulation.Kinematics/Novolis.Simulation.Kinematics.csproj" />
     <Project Path="src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
     <Project Path="src/Novolis.Simulation/Novolis.Simulation.csproj" />
+    <Project Path="src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Novolis.Simulation.World.Tests/Novolis.Simulation.World.Tests.csproj" />
-    <Project Path="tests/Novolis.Simulation.View.Tests/Novolis.Simulation.View.Tests.csproj" />
-    <Project Path="tests/Novolis.Simulation.World.Builders.Tests/Novolis.Simulation.World.Builders.Tests.csproj" />
-  </Folder>
+    <Project Path="tests/Novolis.Simulation.Unit/Novolis.Simulation.Unit.csproj" />
+    </Folder>
 </Solution>

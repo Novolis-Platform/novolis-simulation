@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Unit</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Novolis.Math.Arrays" />
+    <PackageReference Include="TUnit" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.View/Novolis.Simulation.View.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.World/Novolis.Simulation.World.csproj" />
+  </ItemGroup>
+</Project>

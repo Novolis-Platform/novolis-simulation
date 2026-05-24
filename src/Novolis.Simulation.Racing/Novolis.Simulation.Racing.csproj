@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Racing</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Racing</AssemblyName>
+    <PackageId>Novolis.Simulation.Racing</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Headless neural-racing simulation: tracks, sensors, rewards, and tick-based race loop.</Description>
+    <!-- Transitional: migrated from Frank.ML with Vector2; follow-up to XZ Vector3 per stack policy. -->
+    <NoWarn>$(NoWarn);NOV2002</NoWarn>
+  </PropertyGroup>
+</Project>
