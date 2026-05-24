@@ -4,6 +4,7 @@ using Novolis.Simulation.Racing.Cars;
 using Novolis.Simulation.Racing.Progress;
 using Novolis.Simulation.Racing.Tracks;
 
+/// <summary>Represents DefaultRewardModel.</summary>
 public sealed class DefaultRewardModel : IRewardModel
 {
     private const double ForwardProgressScale = 10.0;
@@ -13,6 +14,7 @@ public sealed class DefaultRewardModel : IRewardModel
     private const double GateRewardValue = 2.0;
     private const double LapRewardValue = 10.0;
 
+    /// <summary>Evaluate operation.</summary>
     public RewardBreakdown Evaluate(
         RaceTrack track,
         CarState previous,

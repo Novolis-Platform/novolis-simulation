@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Extended lap with gentle bends and a late tightening — medium commitment braking.</summary>
 public sealed class RiverSprintTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "river-sprint";
+    /// <summary>Name.</summary>
     public string Name => "River sprint";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Polyline(
         rasterWidth: 104,
         rasterHeight: 46,

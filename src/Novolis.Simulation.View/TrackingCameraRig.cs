@@ -8,18 +8,23 @@ public sealed class TrackingCameraRig
     private Vector3 _smoothedPosition;
     private bool _initialized;
 
+    /// <summary>Offset.</summary>
     public Vector3 Offset { get; set; } = new(0f, 6f, 0f);
 
+    /// <summary>SmoothRate.</summary>
     public float SmoothRate { get; set; } = 12f;
 
+    /// <summary>Snap operation.</summary>
     public void Snap(Vector3 worldPosition)
     {
         _smoothedPosition = worldPosition;
         _initialized = true;
     }
 
+    /// <summary>ResetSmoothing operation.</summary>
     public void ResetSmoothing() => _initialized = false;
 
+    /// <summary>Update operation.</summary>
     public Vector3 Update(float deltaSeconds, Vector3 worldPosition)
     {
         if (!_initialized)
@@ -34,5 +39,6 @@ public sealed class TrackingCameraRig
         return _smoothedPosition;
     }
 
+    /// <summary>TrackedPoint.</summary>
     public Vector3 TrackedPoint => _smoothedPosition + Offset;
 }

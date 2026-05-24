@@ -8,6 +8,7 @@ using Novolis.Simulation.Racing.Rewards;
 using Novolis.Simulation.Racing.Sensors;
 using Novolis.Simulation.Racing.Tracks;
 
+/// <summary>Represents RaceSimulation.</summary>
 public sealed class RaceSimulation : IRaceSimulation
 {
     private const double DeltaTime = 1.0 / 60.0;
@@ -21,10 +22,14 @@ public sealed class RaceSimulation : IRaceSimulation
     private readonly IRewardModel? _trainingRewardModel;
     private readonly double[]? _trainingRewardAccumulator;
 
+    /// <summary>Track.</summary>
     public RaceTrack Track { get; }
+    /// <summary>Controllers.</summary>
     public IReadOnlyList<IRaceCarController> Controllers { get; }
+    /// <summary>State.</summary>
     public RaceWorldState State { get; private set; }
 
+    /// <summary>RaceSimulation operation.</summary>
     public RaceSimulation(
         RaceTrack track,
         IReadOnlyList<IRaceCarController> controllers,
@@ -48,11 +53,13 @@ public sealed class RaceSimulation : IRaceSimulation
         State = CreateInitialState();
     }
 
+    /// <summary>Reset operation.</summary>
     public void Reset()
     {
         State = CreateInitialState();
     }
 
+    /// <summary>Tick operation.</summary>
     public void Tick()
     {
         State.Tick++;

@@ -8,6 +8,7 @@ namespace Novolis.Simulation.Racing.Race;
 /// <summary>ASCII overview of a race grid — presentation-neutral output for consoles or logs.</summary>
 public static class RaceAsciiRenderer
 {
+    /// <summary>Render operation.</summary>
     public static string Render(RaceSimulation sim)
     {
         var track = sim.Track;

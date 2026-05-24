@@ -6,6 +6,7 @@ using Novolis.Simulation.Racing.Cars;
 using Novolis.Simulation.Racing.Progress;
 using Novolis.Simulation.Racing.Tracks;
 
+/// <summary>Represents DefaultCarSensorModel.</summary>
 public sealed class DefaultCarSensorModel : ICarSensorModel
 {
     private const double MaxSpeed = 10.0;
@@ -35,8 +36,10 @@ public sealed class DefaultCarSensorModel : ICarSensorModel
         new("CenterOffset", 0, 0),
     ];
 
+    /// <summary>Definitions.</summary>
     public IReadOnlyList<SensorDefinition> Definitions => AllDefinitions;
 
+    /// <summary>Read operation.</summary>
     public SensorReading Read(RaceTrack track, CarState car)
     {
         var values = new double[10];

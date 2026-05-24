@@ -5,6 +5,7 @@ namespace Novolis.Simulation.World.Builders;
 /// <summary>Builds a <see cref="BvhStaticWorld"/> from an occupancy grid (XZ plane, +Y up).</summary>
 public static class OccupancyColumnMeshBuilder
 {
+    /// <summary>FromWallGrid operation.</summary>
     public static BvhStaticWorld FromWallGrid(
         uint width,
         uint height,

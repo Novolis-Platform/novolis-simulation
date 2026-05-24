@@ -1,7 +1,11 @@
 <Project>
   <PropertyGroup Label="Novolis.Simulation NuGet metadata">
-    <PackageTags>simulation;world;camera;occupancy;kinematics</PackageTags>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Authors>Novolis</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Novolis-Platform/novolis-simulation</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Novolis-Platform/novolis-simulation</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>simulation;world;camera;occupancy;kinematics;racing</PackageTags>
   </PropertyGroup>
 </Project>

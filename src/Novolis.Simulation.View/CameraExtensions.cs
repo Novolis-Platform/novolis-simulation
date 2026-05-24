@@ -2,8 +2,10 @@ using System.Numerics;
 
 namespace Novolis.Simulation.View;
 
+/// <summary>Represents CameraExtensions.</summary>
 public static class CameraExtensions
 {
+    /// <summary>Gets ProjectionMatrix.</summary>
     public static Matrix4x4 GetProjectionMatrix(this Camera camera)
     {
         var fovRadians = camera.FieldOfView * (MathF.PI / 180f);
@@ -14,9 +16,11 @@ public static class CameraExtensions
             camera.FarPlaneDistance);
     }
 
+    /// <summary>Gets ViewMatrix.</summary>
     public static Matrix4x4 GetViewMatrix(this Camera camera) =>
         Matrix4x4.CreateLookAt(camera.Position, camera.Target, camera.Up);
 
+    /// <summary>MoveForward operation.</summary>
     public static void MoveForward(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);
@@ -24,6 +28,7 @@ public static class CameraExtensions
         camera.Target += direction * speed;
     }
 
+    /// <summary>MoveBackward operation.</summary>
     public static void MoveBackward(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);
@@ -31,6 +36,7 @@ public static class CameraExtensions
         camera.Target -= direction * speed;
     }
 
+    /// <summary>MoveLeft operation.</summary>
     public static void MoveLeft(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);
@@ -39,6 +45,7 @@ public static class CameraExtensions
         camera.Target -= left * speed;
     }
 
+    /// <summary>MoveRight operation.</summary>
     public static void MoveRight(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);
@@ -47,6 +54,7 @@ public static class CameraExtensions
         camera.Target += left * speed;
     }
 
+    /// <summary>MoveUp operation.</summary>
     public static void MoveUp(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);
@@ -55,6 +63,7 @@ public static class CameraExtensions
         camera.Target += up * speed;
     }
 
+    /// <summary>MoveDown operation.</summary>
     public static void MoveDown(this Camera camera, float speed)
     {
         var direction = Vector3.Normalize(camera.Target - camera.Position);

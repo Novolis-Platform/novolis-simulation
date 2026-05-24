@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Long bottom straight, climb, tight crest, and descent — one dominant hairpin.</summary>
 public sealed class MountainPassTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "mountain-pass";
+    /// <summary>Name.</summary>
     public string Name => "Mountain pass";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Polyline(
         rasterWidth: 100,
         rasterHeight: 48,

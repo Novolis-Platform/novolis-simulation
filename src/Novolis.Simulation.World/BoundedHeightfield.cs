@@ -9,24 +9,32 @@ public sealed class BoundedHeightfield : IProjectileTerrainContact
     private readonly IHeightSampler _sampler;
     private readonly AxisAlignedRangeBox _range;
 
+    /// <summary>BoundedHeightfield operation.</summary>
+    /// <summary>Creates a square heightfield over [0, extent] on X and Z.</summary>
     public BoundedHeightfield(IHeightSampler sampler, float extentMeters)
     {
         _sampler = sampler ?? throw new ArgumentNullException(nameof(sampler));
         _range = new AxisAlignedRangeBox(extentMeters);
     }
 
+    /// <summary>BoundedHeightfield operation.</summary>
+    /// <summary>Creates a heightfield over an explicit axis-aligned range box.</summary>
     public BoundedHeightfield(IHeightSampler sampler, in AxisAlignedRangeBox range)
     {
         _sampler = sampler ?? throw new ArgumentNullException(nameof(sampler));
         _range = range;
     }
 
+    /// <summary>ExtentMeters.</summary>
     public float ExtentMeters => _range.ExtentMeters;
 
+    /// <summary>IsInside operation.</summary>
     public bool IsInside(float x, float z) => _range.IsInside(x, z);
 
+    /// <summary>Samples a value at the given coordinates.</summary>
     public float SampleHeight(float x, float z) => _sampler.SampleHeight(x, z);
 
+    /// <summary>Attempts the operation and reports whether it succeeded.</summary>
     public bool TryHeightfieldContact(Vector3 position, float radius)
     {
         if (!IsInside(position.X, position.Z))
@@ -35,6 +43,8 @@ public sealed class BoundedHeightfield : IProjectileTerrainContact
         return position.Y <= _sampler.SampleHeight(position.X, position.Z) + radius;
     }
 
+    /// <summary>Projects a point onto the surface.</summary>
+    /// <inheritdoc />
     public Vector3 ProjectOntoSurface(Vector3 position, float surfaceEpsilon = 0.05f)
     {
         var x = System.Math.Clamp(position.X, 0f, _range.ExtentMeters);
@@ -43,6 +53,7 @@ public sealed class BoundedHeightfield : IProjectileTerrainContact
         return new Vector3(x, y, z);
     }
 
+    /// <summary>Attempts the operation and reports whether it succeeded.</summary>
     public bool TrySegmentLeavesRange(
         Vector3 from,
         Vector3 to,

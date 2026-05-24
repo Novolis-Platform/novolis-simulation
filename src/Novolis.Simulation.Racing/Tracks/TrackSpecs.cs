@@ -2,6 +2,7 @@ namespace Novolis.Simulation.Racing.Tracks;
 
 using System.Numerics;
 
+/// <summary>Represents TrackSpecs.</summary>
 public static class TrackSpecs
 {
     /// <summary>Evenly spaced gate fractions in [0, 1) along the spline loop.</summary>
@@ -28,6 +29,7 @@ public static class TrackSpecs
             UniformGateSamples(gateCount),
             startSample);
 
+    /// <summary>Circle operation.</summary>
     public static TrackBuildSpec Circle(
         string name, int rasterWidth, int rasterHeight,
         Vector2 center, float radiusX, float radiusY,

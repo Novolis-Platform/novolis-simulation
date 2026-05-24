@@ -8,6 +8,7 @@ namespace Novolis.Simulation.World.Builders;
 /// <summary>Builds collision and decimated draw meshes from a height sampler.</summary>
 public static class HeightfieldMeshBuilder
 {
+    /// <summary>Builds the configured instance.</summary>
     public static HeightfieldBuildResult Build(IHeightSampler sampler, WorldExtentOptions options)
     {
         var extent = options.ExtentMeters;

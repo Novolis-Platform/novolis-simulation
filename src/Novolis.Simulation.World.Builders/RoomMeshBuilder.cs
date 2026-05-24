@@ -5,6 +5,7 @@ namespace Novolis.Simulation.World.Builders;
 /// <summary>Shared axis-aligned box mesh helpers for occupancy room collision meshes.</summary>
 public static class RoomMeshBuilder
 {
+    /// <summary>AppendBox operation.</summary>
     public static void AppendBox(
         List<Vector3> verts,
         List<int> tris,
@@ -30,6 +31,7 @@ public static class RoomMeshBuilder
         AppendQuad(verts, tris, new(x0, y1, z0), new(x1, y1, z0), new(x1, y1, z1), new(x0, y1, z1));
     }
 
+    /// <summary>AppendQuad operation.</summary>
     public static void AppendQuad(List<Vector3> verts, List<int> tris, Vector3 a, Vector3 b, Vector3 c, Vector3 d)
     {
         var o = verts.Count;

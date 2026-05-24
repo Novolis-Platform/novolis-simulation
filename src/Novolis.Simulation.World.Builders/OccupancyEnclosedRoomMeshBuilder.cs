@@ -6,6 +6,7 @@ namespace Novolis.Simulation.World.Builders;
 /// <summary>Builds an enclosed <see cref="BvhStaticWorld"/> from an occupancy grid (walls + optional floor and ceiling).</summary>
 public static class OccupancyEnclosedRoomMeshBuilder
 {
+    /// <summary>FromWallGrid operation.</summary>
     public static BvhStaticWorld FromWallGrid(
         uint width,
         uint height,

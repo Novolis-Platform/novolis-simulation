@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Tight indoor-style loop; short lap, good for dense traffic experiments.</summary>
 public sealed class KartIndoorTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "kart-indoor";
+    /// <summary>Name.</summary>
     public string Name => "Kart indoor";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Polyline(
         rasterWidth: 68,
         rasterHeight: 34,

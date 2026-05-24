@@ -4,8 +4,10 @@ using System.Numerics;
 
 using Novolis.Simulation.Racing.Tracks;
 
+/// <summary>Represents TrackProgressResolver.</summary>
 public sealed class TrackProgressResolver : ITrackProgressResolver
 {
+    /// <summary>Resolve operation.</summary>
     public TrackProgressSample Resolve(RaceTrack track, Vector2 position, Vector2 forward)
     {
         var map = track.ProgressMap;

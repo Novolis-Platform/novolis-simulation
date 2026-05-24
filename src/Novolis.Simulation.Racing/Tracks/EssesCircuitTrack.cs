@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Flowing S-bends with fair straight exits — rewards smooth steering.</summary>
 public sealed class EssesCircuitTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "esses";
+    /// <summary>Name.</summary>
     public string Name => "Esses";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Polyline(
         rasterWidth: 96,
         rasterHeight: 42,

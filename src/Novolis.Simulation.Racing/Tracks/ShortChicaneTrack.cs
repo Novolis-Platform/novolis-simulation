@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Snake + chicane layout on a reduced grid (similar spirit to <see cref="ChicaneTrack"/>).</summary>
 public sealed class ShortChicaneTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "short-chicane";
+    /// <summary>Name.</summary>
     public string Name => "Short chicane";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Polyline(
         rasterWidth: 92,
         rasterHeight: 40,

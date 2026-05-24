@@ -5,8 +5,11 @@ using System.Numerics;
 /// <summary>Mid-size ellipse; wider straights feel than <see cref="CircleTrack"/> but smaller than <see cref="OvalTrack"/>.</summary>
 public sealed class CompactOvalTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "compact-oval";
+    /// <summary>Name.</summary>
     public string Name => "Compact oval";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Circle(
         Name,
         rasterWidth: 88,

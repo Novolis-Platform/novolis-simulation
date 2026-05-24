@@ -4,8 +4,10 @@ using System.Numerics;
 
 using Novolis.Simulation.Racing.Tracks;
 
+/// <summary>Represents LapScorer.</summary>
 public sealed class LapScorer : ILapScorer
 {
+    /// <summary>Update operation.</summary>
     public void Update(RaceTrack track, CarState car)
     {
         int numGates = track.Gates.Count;

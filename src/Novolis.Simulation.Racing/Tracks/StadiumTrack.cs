@@ -2,10 +2,14 @@ namespace Novolis.Simulation.Racing.Tracks;
 
 using System.Numerics;
 
+/// <summary>Represents StadiumTrack.</summary>
 public sealed class StadiumTrack : ITrackDefinition
 {
+    /// <summary>Id.</summary>
     public string Id => "stadium";
+    /// <summary>Name.</summary>
     public string Name => "Stadium";
+    /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec { get; } = new(
         120, 50, 4.0, 1.0, 5,
         new SplineLoop(CreatePoints()),

@@ -2,8 +2,10 @@ namespace Novolis.Simulation.Racing.Tracks;
 
 using System.Numerics;
 
+/// <summary>Represents CatmullRomSplineSampler.</summary>
 public sealed class CatmullRomSplineSampler : ISplineSampler
 {
+    /// <summary>Samples a value at the given coordinates.</summary>
     public SplineSample Sample(SplineLoop spline, double t)
     {
         var points = spline.ControlPoints;
@@ -37,6 +39,7 @@ public sealed class CatmullRomSplineSampler : ISplineSampler
         return new SplineSample(pos, tangent, normal);
     }
 
+    /// <summary>Samples a value at the given coordinates.</summary>
     public IReadOnlyList<SplineSample> SampleEvenly(SplineLoop spline, int count) =>
         Enumerable.Range(0, count).Select(i => Sample(spline, i / (double)count)).ToArray();
 }

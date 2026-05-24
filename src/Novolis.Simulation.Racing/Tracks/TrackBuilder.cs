@@ -2,10 +2,12 @@ namespace Novolis.Simulation.Racing.Tracks;
 
 using System.Numerics;
 
+/// <summary>Represents TrackBuilder.</summary>
 public sealed class TrackBuilder : ITrackBuilder
 {
     private const int SampleCount = 1000;
 
+    /// <summary>Builds the configured instance.</summary>
     public RaceTrack Build(ITrackDefinition definition)
     {
         var spec = definition.BuildSpec;

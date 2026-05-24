@@ -1,3 +1,21 @@
 namespace Novolis.Simulation.Racing.Tracks;
 
-public enum TrackCell { Empty = 0, Wall = 1, Road = 2, StartFinish = 3, Gate = 4 }
+/// <summary>Represents TrackCell.</summary>
+/// <summary>Represents TrackCell.</summary>
+/// <summary>Represents TrackCell.</summary>
+/// <summary>Represents TrackCell.</summary>
+/// <summary>Represents TrackCell.</summary>
+/// <summary>Represents TrackCell.</summary>
+public enum TrackCell
+{
+    /// <summary>Empty.</summary>
+    Empty = 0,
+    /// <summary>Wall.</summary>
+    Wall = 1,
+    /// <summary>Road.</summary>
+    Road = 2,
+    /// <summary>StartFinish.</summary>
+    StartFinish = 3,
+    /// <summary>Gate.</summary>
+    Gate = 4,
+}
