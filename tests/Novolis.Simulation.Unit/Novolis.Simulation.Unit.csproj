@@ -14,5 +14,6 @@
     <ProjectReference Include="../../src/Novolis.Simulation.View/Novolis.Simulation.View.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.World/Novolis.Simulation.World.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
     <Project Path="src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
     <Project Path="src/Novolis.Simulation/Novolis.Simulation.csproj" />
     <Project Path="src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
+    <Project Path="src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Simulation.Unit/Novolis.Simulation.Unit.csproj" />

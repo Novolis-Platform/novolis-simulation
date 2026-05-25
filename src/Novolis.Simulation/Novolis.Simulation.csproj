@@ -13,5 +13,6 @@
     <ProjectReference Include="..\Novolis.Simulation.View\Novolis.Simulation.View.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj" />
     <ProjectReference Include="..\Novolis.Simulation.World.Builders\Novolis.Simulation.World.Builders.csproj" />
+    <ProjectReference Include="..\Novolis.Simulation.Replay\Novolis.Simulation.Replay.csproj" />
   </ItemGroup>
 </Project>

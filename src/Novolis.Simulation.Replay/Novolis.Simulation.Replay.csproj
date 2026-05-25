@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Replay</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Replay</AssemblyName>
+    <PackageId>Novolis.Simulation.Replay</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Deterministic simulation timelines, step records, and playback helpers.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Simulation.Abstractions\Novolis.Simulation.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

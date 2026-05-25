@@ -50,7 +50,3 @@ public class YawPitchController
         return eye + GetLookDirection() * lookDistance;
     }
 }
-
-/// <summary>Obsolete name; use <see cref="YawPitchController"/>.</summary>
-[Obsolete("Use YawPitchController. Will be removed in a future release.")]
-public sealed class FirstPersonCamera : YawPitchController;
