@@ -35,10 +35,11 @@ public static class OccupancyEnclosedRoomMeshBuilder
 
         if (includeFloor || includeCeiling)
         {
-            var x0 = cellSize;
-            var x1 = (width - 1) * cellSize;
-            var z0 = cellSize;
-            var z1 = (height - 1) * cellSize;
+            // Full grid footprint (not cell centers) so a 2x2 room still has area.
+            var x0 = 0f;
+            var x1 = width * cellSize;
+            var z0 = 0f;
+            var z1 = height * cellSize;
 
             if (includeFloor)
             {

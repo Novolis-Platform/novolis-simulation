@@ -7,6 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Novolis.Math.Arrays" />
+    <PackageReference Include="Novolis.Math.Geometry" />
+    <PackageReference Include="Novolis.Physics.Abstractions" />
+    <PackageReference Include="Novolis.Physics.Collision.Simple" />
     <PackageReference Include="TUnit" />
   </ItemGroup>
   <ItemGroup>
@@ -15,5 +18,7 @@
     <ProjectReference Include="../../src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.World/Novolis.Simulation.World.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Kinematics/Novolis.Simulation.Kinematics.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Abstractions/Novolis.Simulation.Abstractions.csproj" />
   </ItemGroup>
 </Project>
