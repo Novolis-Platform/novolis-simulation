@@ -57,6 +57,16 @@ public sealed class OrbitCameraRig
     public void AdjustDistance(float deltaMeters) =>
         Distance = System.Math.Clamp(Distance + deltaMeters, MinDistance, MaxDistance);
 
+    /// <summary>Eye position orbiting <see cref="Target"/> (no target smoothing).</summary>
+    public Vector3 BuildEyePosition()
+    {
+        var cosP = MathF.Cos(Pitch);
+        return Target + new Vector3(
+            MathF.Sin(Yaw) * cosP * Distance,
+            MathF.Sin(Pitch) * Distance,
+            MathF.Cos(Yaw) * cosP * Distance);
+    }
+
     /// <summary>Builds the configured instance.</summary>
     public ViewPose BuildViewPose(float deltaSeconds)
     {

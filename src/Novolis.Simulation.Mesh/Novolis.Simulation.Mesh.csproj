@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Mesh</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Mesh</AssemblyName>
+    <PackageId>Novolis.Simulation.Mesh</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>DTN/relay mesh kernel: publish, flood, TTL, mailbox, and pathfinding for delayed packet traffic.</Description>
+  </PropertyGroup>
+</Project>

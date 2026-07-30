@@ -11,5 +11,5 @@ public sealed class CircleTrack : ITrackDefinition
     public string Name => "Circle";
     /// <summary>BuildSpec.</summary>
     public TrackBuildSpec BuildSpec => TrackSpecs.Circle(
-        Name, 120, 50, new Vector2(60, 25), 28f, 16f, 4.5, 16, 12, 5);
+        Name, 120, 50, new Vector3(60, 0f, 25), 28f, 16f, 4.5, 16, 12, 5);
 }

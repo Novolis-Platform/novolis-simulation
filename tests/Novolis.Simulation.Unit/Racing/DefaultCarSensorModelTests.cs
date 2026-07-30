@@ -14,8 +14,8 @@ public sealed class DefaultCarSensorModelTests
     private readonly DefaultCarSensorModel _model = new();
 
     private static CarState MakeCar(
-        Vector2? position = null,
-        Vector2? forward = null,
+        Vector3? position = null,
+        Vector3? forward = null,
         double speed = 0.0) => new()
         {
             Id = 0,
@@ -160,7 +160,7 @@ public sealed class DefaultCarSensorModelTests
     [Test]
     public async Task Read_AlignmentSensor_FacingBackward_IsLowValue()
     {
-        var backward = Vector2.Normalize(-_track.StartPose.Forward);
+        var backward = Vector3.Normalize(-_track.StartPose.Forward);
         var car = MakeCar(forward: backward);
         var reading = _model.Read(_track, car);
         await Assert.That(reading.Values[8]).IsLessThan(0.3);
@@ -195,8 +195,8 @@ public sealed class DefaultCarSensorModelTests
     [Test]
     public async Task Read_WallAheadSensor_WhenFacingWall_IsHigh()
     {
-        var pos = new Vector2(89, 25);
-        var forward = Vector2.UnitX;
+        var pos = new Vector3(89, 0f, 25);
+        var forward = Vector3.UnitX;
         var car = MakeCar(position: pos, forward: forward);
         var reading = _model.Read(_track, car);
         await Assert.That(reading.Values[3]).IsGreaterThan(0.3);
@@ -235,14 +235,14 @@ public sealed class DefaultCarSensorModelTests
     [Test]
     public async Task Read_CarAtTrackCorner_DoesNotThrow()
     {
-        var car = MakeCar(position: new Vector2(1, 1));
+        var car = MakeCar(position: new Vector3(1, 0f, 1));
         await Assert.That(() => _model.Read(_track, car)).ThrowsNothing();
     }
 
     [Test]
     public async Task Read_CarNearTrackBoundary_DoesNotThrow()
     {
-        var car = MakeCar(position: new Vector2(_track.Width - 2, _track.Height - 2));
+        var car = MakeCar(position: new Vector3(_track.Width - 2, 0f, _track.Height - 2));
         await Assert.That(() => _model.Read(_track, car)).ThrowsNothing();
     }
 }

@@ -30,7 +30,7 @@ public sealed class TrackBuilderAllDefinitionsTests
     {
         var track = new TrackBuilder().Build(definition);
         var f = track.StartPose.Forward;
-        var len = MathF.Sqrt(f.X * f.X + f.Y * f.Y);
+        var len = MathF.Sqrt(f.X * f.X + f.Z * f.Z);
         await Assert.That(len).IsEqualTo(1f).Within(1e-4f);
     }
 }

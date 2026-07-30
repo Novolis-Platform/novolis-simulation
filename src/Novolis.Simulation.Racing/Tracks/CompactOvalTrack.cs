@@ -14,7 +14,7 @@ public sealed class CompactOvalTrack : ITrackDefinition
         Name,
         rasterWidth: 88,
         rasterHeight: 44,
-        center: new Vector2(44, 22),
+        center: new Vector3(44, 0f, 22),
         radiusX: 24f,
         radiusY: 13f,
         trackHalfWidth: 4.0,

@@ -14,7 +14,7 @@ public sealed class MicroCircleTrack : ITrackDefinition
         Name,
         rasterWidth: 56,
         rasterHeight: 28,
-        center: new Vector2(28, 14),
+        center: new Vector3(28, 0f, 14),
         radiusX: 11f,
         radiusY: 8f,
         trackHalfWidth: 3.2,

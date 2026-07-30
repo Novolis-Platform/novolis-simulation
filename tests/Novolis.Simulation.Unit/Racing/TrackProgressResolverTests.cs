@@ -14,12 +14,12 @@ public class TrackProgressResolverTests : BaseTest
     private static readonly TrackProgressResolver _resolver = new();
     private static readonly RaceTrack _circle = _builder.Build(BuiltInTracks.Circle);
 
-    private static readonly Vector2 _startPos = _circle.ProgressMap.Samples[0];
-    private static readonly Vector2 _startTangent = _circle.ProgressMap.Tangents[0];
-    private static readonly Vector2 _startNormal = new(_startTangent.Y, -_startTangent.X);
+    private static readonly Vector3 _startPos = _circle.ProgressMap.Samples[0];
+    private static readonly Vector3 _startTangent = _circle.ProgressMap.Tangents[0];
+    private static readonly Vector3 _startNormal = new(_startTangent.Z, 0f, -_startTangent.X);
 
-    private static readonly Vector2 _midPos = _circle.ProgressMap.Samples[500];
-    private static readonly Vector2 _midTangent = _circle.ProgressMap.Tangents[500];
+    private static readonly Vector3 _midPos = _circle.ProgressMap.Samples[500];
+    private static readonly Vector3 _midTangent = _circle.ProgressMap.Tangents[500];
 
     [Test]
     public async Task Resolve_LoopT_IsAlwaysAtLeastZero()
@@ -137,7 +137,7 @@ public class TrackProgressResolverTests : BaseTest
     {
         var backComponent = -_startTangent * 0.95f;
         var sideComponent = _startNormal * 0.31f;
-        var forwardJustWrong = Vector2.Normalize(backComponent + sideComponent);
+        var forwardJustWrong = Vector3.Normalize(backComponent + sideComponent);
         var result = _resolver.Resolve(_circle, _startPos, forwardJustWrong);
         await Assert.That(result.IsWrongWay).IsTrue();
     }

@@ -9,4 +9,4 @@ using System.Numerics;
 /// <summary>Name.</summary>
 /// <summary>SensorRayHit operation.</summary>
 /// <summary>Represents SensorRayHit.</summary>
-public sealed record SensorRayHit(string Name, Vector2 Origin, Vector2 Direction, double Distance, bool HitWall);
+public sealed record SensorRayHit(string Name, Vector3 Origin, Vector3 Direction, double Distance, bool HitWall);

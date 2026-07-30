@@ -31,15 +31,15 @@ public sealed class LapScorer : ILapScorer
         }
     }
 
-    private static bool SegmentsIntersect(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
+    private static bool SegmentsIntersect(Vector3 a1, Vector3 a2, Vector3 b1, Vector3 b2)
     {
         var d1 = a2 - a1;
         var d2 = b2 - b1;
-        float cross = d1.X * d2.Y - d1.Y * d2.X;
+        float cross = d1.X * d2.Z - d1.Z * d2.X;
         if (MathF.Abs(cross) < 1e-10f) return false;
         var diff = b1 - a1;
-        float t = (diff.X * d2.Y - diff.Y * d2.X) / cross;
-        float u = (diff.X * d1.Y - diff.Y * d1.X) / cross;
+        float t = (diff.X * d2.Z - diff.Z * d2.X) / cross;
+        float u = (diff.X * d1.Z - diff.Z * d1.X) / cross;
         return t >= 0f && t <= 1f && u >= 0f && u <= 1f;
     }
 }

@@ -16,7 +16,7 @@ public static class TrackSpecs
         double trackHalfWidth,
         double wallThickness,
         int lapsToFinish,
-        IReadOnlyList<Vector2> controlPoints,
+        IReadOnlyList<Vector3> controlPoints,
         int gateCount,
         double startSample = 0) =>
         new(
@@ -32,7 +32,7 @@ public static class TrackSpecs
     /// <summary>Circle operation.</summary>
     public static TrackBuildSpec Circle(
         string name, int rasterWidth, int rasterHeight,
-        Vector2 center, float radiusX, float radiusY,
+        Vector3 center, float radiusX, float radiusY,
         double trackHalfWidth, int controlPoints = 16, int gates = 12, int lapsToFinish = 5)
     {
         _ = name;
@@ -40,7 +40,7 @@ public static class TrackSpecs
             .Select(i =>
             {
                 var angle = MathF.Tau * i / controlPoints;
-                return center + new Vector2(MathF.Cos(angle) * radiusX, MathF.Sin(angle) * radiusY);
+                return center + new Vector3(MathF.Cos(angle) * radiusX, 0f, MathF.Sin(angle) * radiusY);
             }).ToArray();
         return new TrackBuildSpec(
             rasterWidth, rasterHeight, trackHalfWidth, 1.0, lapsToFinish,

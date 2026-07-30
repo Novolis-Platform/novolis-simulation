@@ -18,9 +18,9 @@ public sealed class RiverSprintTrack : ITrackDefinition
         lapsToFinish: 5,
         controlPoints:
         [
-            new(16, 23), new(36, 12), new(58, 14), new(78, 10),
-            new(94, 22), new(82, 34), new(58, 32), new(38, 36),
-            new(18, 30)
+            new(16, 0f, 23), new(36, 0f, 12), new(58, 0f, 14), new(78, 0f, 10),
+            new(94, 0f, 22), new(82, 0f, 34), new(58, 0f, 32), new(38, 0f, 36),
+            new(18, 0f, 30)
         ],
         gateCount: 12);
 }

@@ -7,4 +7,4 @@ using System.Numerics;
 /// <summary>Position.</summary>
 /// <summary>SplineSample operation.</summary>
 /// <summary>Represents SplineSample.</summary>
-public readonly record struct SplineSample(Vector2 Position, Vector2 Tangent, Vector2 Normal);
+public readonly record struct SplineSample(Vector3 Position, Vector3 Tangent, Vector3 Normal);

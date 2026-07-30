@@ -8,5 +8,5 @@ using Novolis.Simulation.Racing.Tracks;
 public interface ITrackProgressResolver
 {
     /// <summary>Resolve operation.</summary>
-    TrackProgressSample Resolve(RaceTrack track, Vector2 position, Vector2 forward);
+    TrackProgressSample Resolve(RaceTrack track, Vector3 position, Vector3 forward);
 }

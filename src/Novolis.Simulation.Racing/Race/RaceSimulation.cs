@@ -88,15 +88,15 @@ public sealed class RaceSimulation : IRaceSimulation
             double turnRadians = decision.Steering * MaxTurnRateRadiansPerSecond * DeltaTime;
             double cos = Math.Cos(turnRadians);
             double sin = Math.Sin(turnRadians);
-            float newFx = (float)(car.Forward.X * cos - car.Forward.Y * sin);
-            float newFy = (float)(car.Forward.X * sin + car.Forward.Y * cos);
-            car.Forward = Vector2.Normalize(new Vector2(newFx, newFy));
+            float newFx = (float)(car.Forward.X * cos - car.Forward.Z * sin);
+            float newFy = (float)(car.Forward.X * sin + car.Forward.Z * cos);
+            car.Forward = Vector3.Normalize(new Vector3(newFx, 0f, newFy));
             car.SteeringAngle = decision.Steering;
 
             car.Position += car.Forward * (float)(car.Speed * DeltaTime);
 
             int col = (int)car.Position.X;
-            int row = (int)car.Position.Y;
+            int row = (int)car.Position.Z;
 
             if (col < 0 || col >= Track.Width || row < 0 || row >= Track.Height)
             {
@@ -150,8 +150,8 @@ public sealed class RaceSimulation : IRaceSimulation
         {
             Id = i,
             Name = ctrl.Name,
-            Position = Track.StartPose.Position + new Vector2(i * 1.5f, 0),
-            PreviousPosition = Track.StartPose.Position + new Vector2(i * 1.5f, 0),
+            Position = Track.StartPose.Position + new Vector3(i * 1.5f, 0f, 0),
+            PreviousPosition = Track.StartPose.Position + new Vector3(i * 1.5f, 0f, 0),
             Forward = Track.StartPose.Forward,
             Speed = 0,
             SteeringAngle = 0,

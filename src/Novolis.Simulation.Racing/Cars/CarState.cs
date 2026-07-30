@@ -11,11 +11,11 @@ public sealed class CarState
     public required string Name { get; init; }
 
     /// <summary>Position.</summary>
-    public required Vector2 Position { get; set; }
+    public required Vector3 Position { get; set; }
     /// <summary>PreviousPosition.</summary>
-    public required Vector2 PreviousPosition { get; set; }
+    public required Vector3 PreviousPosition { get; set; }
     /// <summary>Forward.</summary>
-    public required Vector2 Forward { get; set; }
+    public required Vector3 Forward { get; set; }
 
     /// <summary>Speed.</summary>
     public required double Speed { get; set; }

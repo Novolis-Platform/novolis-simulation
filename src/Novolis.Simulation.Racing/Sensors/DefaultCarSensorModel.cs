@@ -56,40 +56,40 @@ public sealed class DefaultCarSensorModel : ICarSensorModel
         }
 
         values[7] = Math.Clamp(car.Speed / MaxSpeed, 0.0, 1.0);
-        hits[7] = new SensorRayHit("Speed", car.Position, Vector2.Zero, car.Speed, false);
+        hits[7] = new SensorRayHit("Speed", car.Position, Vector3.Zero, car.Speed, false);
 
         var resolver = new TrackProgressResolver();
         var progress = resolver.Resolve(track, car.Position, car.Forward);
 
         values[8] = progress.Alignment;
-        hits[8] = new SensorRayHit("Alignment", car.Position, Vector2.Zero, progress.Alignment, false);
+        hits[8] = new SensorRayHit("Alignment", car.Position, Vector3.Zero, progress.Alignment, false);
 
         double halfWidth = track.Geometry.HalfWidth;
         double offsetNorm = (Math.Clamp(progress.SignedCenterOffset / halfWidth, -1.0, 1.0) + 1.0) / 2.0;
         values[9] = offsetNorm;
-        hits[9] = new SensorRayHit("CenterOffset", car.Position, Vector2.Zero, progress.SignedCenterOffset, false);
+        hits[9] = new SensorRayHit("CenterOffset", car.Position, Vector3.Zero, progress.SignedCenterOffset, false);
 
         return new SensorReading(values, hits);
     }
 
-    private static Vector2 Rotate(Vector2 v, double angleRad)
+    private static Vector3 Rotate(Vector3 v, double angleRad)
     {
         float cos = (float)Math.Cos(angleRad);
         float sin = (float)Math.Sin(angleRad);
-        return new Vector2(cos * v.X - sin * v.Y, sin * v.X + cos * v.Y);
+        return new Vector3(cos * v.X - sin * v.Z, 0f, sin * v.X + cos * v.Z);
     }
 
-    private static (double distance, bool hitWall) MarchRay(RaceTrack track, Vector2 origin, Vector2 direction, double maxRange)
+    private static (double distance, bool hitWall) MarchRay(RaceTrack track, Vector3 origin, Vector3 direction, double maxRange)
     {
         float stepSize = 0.5f;
         int maxSteps = (int)(maxRange / stepSize) + 1;
-        var dir = Vector2.Normalize(direction) * stepSize;
+        var dir = Vector3.Normalize(direction) * stepSize;
 
         for (int step = 1; step <= maxSteps; step++)
         {
             var pos = origin + dir * step;
             int col = (int)pos.X;
-            int row = (int)pos.Y;
+            int row = (int)pos.Z;
 
             if (col < 0 || col >= track.Width || row < 0 || row >= track.Height)
                 return (step * stepSize, false);

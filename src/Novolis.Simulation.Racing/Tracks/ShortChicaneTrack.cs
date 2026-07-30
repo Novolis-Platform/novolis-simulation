@@ -18,10 +18,10 @@ public sealed class ShortChicaneTrack : ITrackDefinition
         lapsToFinish: 4,
         controlPoints:
         [
-            new(14, 20), new(24, 20), new(34, 12), new(46, 12),
-            new(54, 20), new(64, 28), new(74, 28), new(82, 20),
-            new(82, 12), new(72, 8), new(50, 8), new(28, 14),
-            new(14, 18)
+            new(14, 0f, 20), new(24, 0f, 20), new(34, 0f, 12), new(46, 0f, 12),
+            new(54, 0f, 20), new(64, 0f, 28), new(74, 0f, 28), new(82, 0f, 20),
+            new(82, 0f, 12), new(72, 0f, 8), new(50, 0f, 8), new(28, 0f, 14),
+            new(14, 0f, 18)
         ],
         gateCount: 10);
 }

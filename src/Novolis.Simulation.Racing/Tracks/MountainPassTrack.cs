@@ -18,8 +18,8 @@ public sealed class MountainPassTrack : ITrackDefinition
         lapsToFinish: 4,
         controlPoints:
         [
-            new(18, 38), new(72, 38), new(86, 26), new(82, 12),
-            new(62, 8), new(40, 10), new(22, 18), new(14, 28)
+            new(18, 0f, 38), new(72, 0f, 38), new(86, 0f, 26), new(82, 0f, 12),
+            new(62, 0f, 8), new(40, 0f, 10), new(22, 0f, 18), new(14, 0f, 28)
         ],
         gateCount: 10);
 }

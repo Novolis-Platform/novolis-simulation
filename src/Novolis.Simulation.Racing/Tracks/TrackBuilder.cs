@@ -19,8 +19,8 @@ public sealed class TrackBuilder : ITrackBuilder
         var arcLens = new double[SampleCount];
         arcLens[0] = 0;
         for (int i = 1; i < SampleCount; i++)
-            arcLens[i] = arcLens[i - 1] + Vector2.Distance(positions[i], positions[i - 1]);
-        double totalArcLength = arcLens[SampleCount - 1] + Vector2.Distance(positions[SampleCount - 1], positions[0]);
+            arcLens[i] = arcLens[i - 1] + Vector3.Distance(positions[i], positions[i - 1]);
+        double totalArcLength = arcLens[SampleCount - 1] + Vector3.Distance(positions[SampleCount - 1], positions[0]);
 
         var progressMap = new TrackProgressMap
         {
@@ -41,13 +41,13 @@ public sealed class TrackBuilder : ITrackBuilder
         {
             for (int row = 0; row < height; row++)
             {
-                var worldPos = new Vector2(col + 0.5f, row + 0.5f);
+                var worldPos = new Vector3(col + 0.5f, 0f, row + 0.5f);
 
                 int nearestIdx = 0;
                 float nearestDistSq = float.MaxValue;
                 for (int s = 0; s < SampleCount; s++)
                 {
-                    float dSq = Vector2.DistanceSquared(worldPos, positions[s]);
+                    float dSq = Vector3.DistanceSquared(worldPos, positions[s]);
                     if (dSq < nearestDistSq)
                     {
                         nearestDistSq = dSq;
@@ -82,7 +82,7 @@ public sealed class TrackBuilder : ITrackBuilder
         int startIdx = (int)(spec.StartSample * SampleCount) % SampleCount;
         var startSample = samples[startIdx];
         int startCol = (int)startSample.Position.X;
-        int startRow = (int)startSample.Position.Y;
+        int startRow = (int)startSample.Position.Z;
         if (startCol >= 0 && startCol < width && startRow >= 0 && startRow < height)
             cells[startCol, startRow] = TrackCell.StartFinish;
 
@@ -122,7 +122,7 @@ public sealed class TrackBuilder : ITrackBuilder
         };
     }
 
-    private static void MarkGateLine(TrackCell[,] cells, int width, int height, Vector2 a, Vector2 b)
+    private static void MarkGateLine(TrackCell[,] cells, int width, int height, Vector3 a, Vector3 b)
     {
         var dir = b - a;
         float len = dir.Length();
@@ -133,7 +133,7 @@ public sealed class TrackBuilder : ITrackBuilder
         {
             var pt = a + step * i;
             int col = (int)pt.X;
-            int row = (int)pt.Y;
+            int row = (int)pt.Z;
             if (col >= 0 && col < width && row >= 0 && row < height)
             {
                 if (cells[col, row] == TrackCell.Road)
@@ -142,14 +142,14 @@ public sealed class TrackBuilder : ITrackBuilder
         }
     }
 
-    private static double DistanceToSegment(Vector2 point, Vector2 a, Vector2 b)
+    private static double DistanceToSegment(Vector3 point, Vector3 a, Vector3 b)
     {
         var ab = b - a;
         float lenSq = ab.LengthSquared();
         if (lenSq < 1e-10f)
-            return Vector2.Distance(point, a);
-        float t = Math.Clamp(Vector2.Dot(point - a, ab) / lenSq, 0f, 1f);
+            return Vector3.Distance(point, a);
+        float t = Math.Clamp(Vector3.Dot(point - a, ab) / lenSq, 0f, 1f);
         var proj = a + ab * t;
-        return Vector2.Distance(point, proj);
+        return Vector3.Distance(point, proj);
     }
 }

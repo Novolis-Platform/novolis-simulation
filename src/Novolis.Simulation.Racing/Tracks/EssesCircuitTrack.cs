@@ -18,8 +18,8 @@ public sealed class EssesCircuitTrack : ITrackDefinition
         lapsToFinish: 4,
         controlPoints:
         [
-            new(14, 21), new(28, 10), new(48, 16), new(68, 10),
-            new(84, 21), new(68, 32), new(48, 26), new(28, 32)
+            new(14, 0f, 21), new(28, 0f, 10), new(48, 0f, 16), new(68, 0f, 10),
+            new(84, 0f, 21), new(68, 0f, 32), new(48, 0f, 26), new(28, 0f, 32)
         ],
         gateCount: 10);
 }

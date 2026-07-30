@@ -18,8 +18,8 @@ public sealed class KartIndoorTrack : ITrackDefinition
         lapsToFinish: 3,
         controlPoints:
         [
-            new(16, 16), new(44, 10), new(56, 20), new(50, 24),
-            new(34, 26), new(22, 24), new(12, 20)
+            new(16, 0f, 16), new(44, 0f, 10), new(56, 0f, 20), new(50, 0f, 24),
+            new(34, 0f, 26), new(22, 0f, 24), new(12, 0f, 20)
         ],
         gateCount: 8);
 }

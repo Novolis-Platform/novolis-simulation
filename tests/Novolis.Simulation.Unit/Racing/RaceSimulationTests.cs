@@ -80,9 +80,9 @@ public sealed class RaceSimulationTests
         var sim = BuildSim(new IdleController());
         var car = sim.State.Cars[0];
         var startX = sim.Track.StartPose.Position.X;
-        var startY = sim.Track.StartPose.Position.Y;
+        var startY = sim.Track.StartPose.Position.Z;
         await Assert.That(car.Position.X).IsEqualTo(startX).Within(5f);
-        await Assert.That(car.Position.Y).IsEqualTo(startY).Within(5f);
+        await Assert.That(car.Position.Z).IsEqualTo(startY).Within(5f);
     }
 
     [Test]
@@ -186,7 +186,7 @@ public sealed class RaceSimulationTests
     public async Task Tick_CrashedCar_SpeedIsZero()
     {
         var sim = BuildSim(new FullThrottleController());
-        sim.State.Cars[0].Position = new Vector2(-5, -5);
+        sim.State.Cars[0].Position = new Vector3(-5, 0f, -5);
         sim.Tick();
         await Assert.That(sim.State.Cars[0].Crashed).IsTrue();
         await Assert.That(sim.State.Cars[0].Speed).IsEqualTo(0);
@@ -196,7 +196,7 @@ public sealed class RaceSimulationTests
     public async Task Tick_CrashedCar_PositionDoesNotChange()
     {
         var sim = BuildSim(new FullThrottleController());
-        sim.State.Cars[0].Position = new Vector2(-5, -5);
+        sim.State.Cars[0].Position = new Vector3(-5, 0f, -5);
         sim.Tick();
         var crashPos = sim.State.Cars[0].Position;
         for (int i = 0; i < 20; i++) sim.Tick();
@@ -207,7 +207,7 @@ public sealed class RaceSimulationTests
     public async Task Tick_CarOutsideBounds_IsCrashed()
     {
         var sim = BuildSim(new IdleController());
-        sim.State.Cars[0].Position = new Vector2(_track.Width + 10, _track.Height + 10);
+        sim.State.Cars[0].Position = new Vector3(_track.Width + 10, 0f, _track.Height + 10);
         sim.Tick();
         await Assert.That(sim.State.Cars[0].Crashed).IsTrue();
     }
@@ -256,7 +256,7 @@ public sealed class RaceSimulationTests
     public async Task Reset_CrashedCar_IsNoLongerCrashed()
     {
         var sim = BuildSim(new FullThrottleController());
-        sim.State.Cars[0].Position = new Vector2(-5, -5);
+        sim.State.Cars[0].Position = new Vector3(-5, 0f, -5);
         sim.Tick();
         await Assert.That(sim.State.Cars[0].Crashed).IsTrue();
         sim.Reset();

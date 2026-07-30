@@ -25,7 +25,7 @@ public static class RaceAsciiRenderer
         {
             var car = sim.State.Cars[i];
             var cx = (int)car.Position.X;
-            var cy = (int)car.Position.Y;
+            var cy = (int)car.Position.Z;
             if (cx < 0 || cx >= w || cy < 0 || cy >= h)
                 continue;
             var mark = (char)('1' + Math.Min(i, 8));

@@ -183,7 +183,7 @@ public class TrackBuilderTests : BaseTest
     [Test]
     public async Task Build_SmallCircle_CellsAreWithinGridBounds()
     {
-        var spec = TrackSpecs.Circle("small", 40, 40, new Vector2(20, 20), 10f, 10f, 3.0, 8, 4, 1);
+        var spec = TrackSpecs.Circle("small", 40, 40, new Vector3(20, 0f, 20), 10f, 10f, 3.0, 8, 4, 1);
         var def = new SimpleTrackDefinition("small-circle", "Small Circle", spec);
         var track = _builder.Build(def);
 
@@ -196,7 +196,7 @@ public class TrackBuilderTests : BaseTest
     [Test]
     public async Task Build_NarrowTrack_StillProducesRoadCells()
     {
-        var spec = TrackSpecs.Circle("narrow", 60, 60, new Vector2(30, 30), 20f, 20f, 1.0, 8, 4, 1);
+        var spec = TrackSpecs.Circle("narrow", 60, 60, new Vector3(30, 0f, 30), 20f, 20f, 1.0, 8, 4, 1);
         var def = new SimpleTrackDefinition("narrow", "Narrow", spec);
         var track = _builder.Build(def);
         await Assert.That(CountCells(track, TrackCell.Road)).IsGreaterThan(0);
@@ -208,7 +208,7 @@ public class TrackBuilderTests : BaseTest
     [Arguments(16)]
     public async Task Build_CustomGateCount_MatchesExpected(int gateCount)
     {
-        var spec = TrackSpecs.Circle("g", 120, 50, new Vector2(60, 25), 28f, 16f, 4.5, 16, gateCount, 1);
+        var spec = TrackSpecs.Circle("g", 120, 50, new Vector3(60, 0f, 25), 28f, 16f, 4.5, 16, gateCount, 1);
         var def = new SimpleTrackDefinition($"g{gateCount}", "GateTest", spec);
         var track = _builder.Build(def);
         await Assert.That(track.Gates.Count).IsEqualTo(gateCount);

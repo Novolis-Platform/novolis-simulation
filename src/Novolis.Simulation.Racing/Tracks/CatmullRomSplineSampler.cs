@@ -28,13 +28,13 @@ public sealed class CatmullRomSplineSampler : ISplineSampler
             + 2 * (2 * p0 - 5 * p1 + 4 * p2 - p3) * (float)u
             + 3 * (-p0 + 3 * p1 - 3 * p2 + p3) * (float)(u * u));
 
-        Vector2 tangent;
+        Vector3 tangent;
         if (tanUnnorm.LengthSquared() < 1e-10f)
-            tangent = Vector2.UnitX;
+            tangent = Vector3.UnitX;
         else
-            tangent = Vector2.Normalize(tanUnnorm);
+            tangent = Vector3.Normalize(tanUnnorm);
 
-        var normal = new Vector2(tangent.Y, -tangent.X);
+        var normal = new Vector3(tangent.Z, 0f, -tangent.X);
 
         return new SplineSample(pos, tangent, normal);
     }

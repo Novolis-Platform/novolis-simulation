@@ -17,8 +17,8 @@ public sealed class LapScorerTests
             for (int r = 0; r < h; r++)
                 cells[c, r] = TrackCell.Road;
 
-        Vector2[] samples = [new(50, 5), new(95, 30), new(50, 55), new(5, 30)];
-        Vector2[] tangents = [Vector2.UnitX, Vector2.UnitY, -Vector2.UnitX, -Vector2.UnitY];
+        Vector3[] samples = [new(50, 0f, 5), new(95, 0f, 30), new(50, 0f, 55), new(5, 0f, 30)];
+        Vector3[] tangents = [Vector3.UnitX, Vector3.UnitZ, -Vector3.UnitX, -Vector3.UnitZ];
         double[] arcLens = [0, 50, 100, 150];
 
         var progressMap = new TrackProgressMap
@@ -31,8 +31,8 @@ public sealed class LapScorerTests
 
         var geometry = new TrackGeometry
         {
-            LeftBoundary = Array.Empty<Vector2>(),
-            RightBoundary = Array.Empty<Vector2>(),
+            LeftBoundary = Array.Empty<Vector3>(),
+            RightBoundary = Array.Empty<Vector3>(),
             HalfWidth = 5.0
         };
 
@@ -45,7 +45,7 @@ public sealed class LapScorerTests
             Cells = cells,
             CenterLineSamples = samples,
             Gates = gates,
-            StartPose = new TrackStartPose(new Vector2(50, 30), Vector2.UnitX),
+            StartPose = new TrackStartPose(new Vector3(50, 0f, 30), Vector3.UnitX),
             ProgressMap = progressMap,
             Geometry = geometry
         };
@@ -53,9 +53,9 @@ public sealed class LapScorerTests
 
     private static readonly IReadOnlyList<TrackGate> ThreeGates =
     [
-        new TrackGate(0, new Vector2(50, 20), new Vector2(50, 30), 0.0),
-        new TrackGate(1, new Vector2(70, 20), new Vector2(70, 30), 0.33),
-        new TrackGate(2, new Vector2(30, 20), new Vector2(30, 30), 0.66),
+        new TrackGate(0, new Vector3(50, 0f, 20), new Vector3(50, 0f, 30), 0.0),
+        new TrackGate(1, new Vector3(70, 0f, 20), new Vector3(70, 0f, 30), 0.33),
+        new TrackGate(2, new Vector3(30, 0f, 20), new Vector3(30, 0f, 30), 0.66),
     ];
 
     private static readonly RaceTrack ThreeGateTrack = BuildMinimalTrack(ThreeGates);
@@ -65,9 +65,9 @@ public sealed class LapScorerTests
     {
         Id = 0,
         Name = "TestCar",
-        Position = new Vector2(50, 25),
-        PreviousPosition = new Vector2(50, 25),
-        Forward = Vector2.UnitX,
+        Position = new Vector3(50, 0f, 25),
+        PreviousPosition = new Vector3(50, 0f, 25),
+        Forward = Vector3.UnitX,
         Speed = 0,
         SteeringAngle = 0,
         Crashed = false,
@@ -83,7 +83,7 @@ public sealed class LapScorerTests
     private static void CrossGate(CarState car, TrackGate gate)
     {
         var mid = (gate.A + gate.B) / 2f;
-        var normal = Vector2.Normalize(new Vector2(gate.B.Y - gate.A.Y, -(gate.B.X - gate.A.X)));
+        var normal = Vector3.Normalize(new Vector3(gate.B.Z - gate.A.Z, 0f, -(gate.B.X - gate.A.X)));
         car.PreviousPosition = mid - normal * 2;
         car.Position = mid + normal * 2;
     }
@@ -94,8 +94,8 @@ public sealed class LapScorerTests
     public async Task Update_EmptyTrack_DoesNotChangeLaps()
     {
         var car = MakeCar(0);
-        car.PreviousPosition = new Vector2(10, 25);
-        car.Position = new Vector2(20, 25);
+        car.PreviousPosition = new Vector3(10, 0f, 25);
+        car.Position = new Vector3(20, 0f, 25);
         _scorer.Update(EmptyGateTrack, car);
         await Assert.That(car.CompletedLaps).IsEqualTo(0);
     }
@@ -104,8 +104,8 @@ public sealed class LapScorerTests
     public async Task Update_EmptyTrack_DoesNotChangeGateIndex()
     {
         var car = MakeCar(0);
-        car.PreviousPosition = new Vector2(10, 25);
-        car.Position = new Vector2(20, 25);
+        car.PreviousPosition = new Vector3(10, 0f, 25);
+        car.Position = new Vector3(20, 0f, 25);
         _scorer.Update(EmptyGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }
@@ -122,8 +122,8 @@ public sealed class LapScorerTests
     public async Task Update_NoCrossing_GateIndexUnchanged()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(10, 25);
-        car.Position = new Vector2(20, 25);
+        car.PreviousPosition = new Vector3(10, 0f, 25);
+        car.Position = new Vector3(20, 0f, 25);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(2);
     }
@@ -132,8 +132,8 @@ public sealed class LapScorerTests
     public async Task Update_NoCrossing_LapsUnchanged()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(10, 25);
-        car.Position = new Vector2(20, 25);
+        car.PreviousPosition = new Vector3(10, 0f, 25);
+        car.Position = new Vector3(20, 0f, 25);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CompletedLaps).IsEqualTo(0);
     }
@@ -245,8 +245,8 @@ public sealed class LapScorerTests
     public async Task Update_ParallelPath_DoesNotRegister()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(51, 20);
-        car.Position = new Vector2(51, 30);
+        car.PreviousPosition = new Vector3(51, 0f, 20);
+        car.Position = new Vector3(51, 0f, 30);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(2);
     }
@@ -255,8 +255,8 @@ public sealed class LapScorerTests
     public async Task Update_PerpendicularCrossing_Registers()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(46, 25);
-        car.Position = new Vector2(54, 25);
+        car.PreviousPosition = new Vector3(46, 0f, 25);
+        car.Position = new Vector3(54, 0f, 25);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }
@@ -265,8 +265,8 @@ public sealed class LapScorerTests
     public async Task Update_ExactMidpointCrossing_Registers()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(48, 25);
-        car.Position = new Vector2(52, 25);
+        car.PreviousPosition = new Vector3(48, 0f, 25);
+        car.Position = new Vector3(52, 0f, 25);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }
@@ -275,8 +275,8 @@ public sealed class LapScorerTests
     public async Task Update_ReversedCrossing_StillRegisters()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(52, 25);
-        car.Position = new Vector2(48, 25);
+        car.PreviousPosition = new Vector3(52, 0f, 25);
+        car.Position = new Vector3(48, 0f, 25);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }
@@ -285,8 +285,8 @@ public sealed class LapScorerTests
     public async Task Update_BarelyClipsGateEndpoint_Registers()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(48, 20);
-        car.Position = new Vector2(52, 20);
+        car.PreviousPosition = new Vector3(48, 0f, 20);
+        car.Position = new Vector3(52, 0f, 20);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }
@@ -295,8 +295,8 @@ public sealed class LapScorerTests
     public async Task Update_PathDoesNotReachGate_DoesNotRegister()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(48, 10);
-        car.Position = new Vector2(52, 10);
+        car.PreviousPosition = new Vector3(48, 0f, 10);
+        car.Position = new Vector3(52, 0f, 10);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(2);
     }
@@ -306,13 +306,13 @@ public sealed class LapScorerTests
     {
         var singleGate = new List<TrackGate>
         {
-            new TrackGate(0, new Vector2(50, 20), new Vector2(50, 30), 0.0)
+            new TrackGate(0, new Vector3(50, 0f, 20), new Vector3(50, 0f, 30), 0.0)
         };
         var track = BuildMinimalTrack(singleGate);
         var car = MakeCar(0);
 
-        car.PreviousPosition = new Vector2(48, 25);
-        car.Position = new Vector2(52, 25);
+        car.PreviousPosition = new Vector3(48, 0f, 25);
+        car.Position = new Vector3(52, 0f, 25);
         _scorer.Update(track, car);
 
         await Assert.That(car.CompletedLaps).IsEqualTo(1);
@@ -324,15 +324,15 @@ public sealed class LapScorerTests
     {
         var singleGate = new List<TrackGate>
         {
-            new TrackGate(0, new Vector2(50, 20), new Vector2(50, 30), 0.0)
+            new TrackGate(0, new Vector3(50, 0f, 20), new Vector3(50, 0f, 30), 0.0)
         };
         var track = BuildMinimalTrack(singleGate);
         var car = MakeCar(0);
 
         for (int i = 0; i < 3; i++)
         {
-            car.PreviousPosition = new Vector2(48, 25);
-            car.Position = new Vector2(52, 25);
+            car.PreviousPosition = new Vector3(48, 0f, 25);
+            car.Position = new Vector3(52, 0f, 25);
             _scorer.Update(track, car);
         }
 
@@ -368,19 +368,19 @@ public sealed class LapScorerTests
     {
         var twoGates = new List<TrackGate>
         {
-            new TrackGate(0, new Vector2(50, 20), new Vector2(50, 30), 0.0),
-            new TrackGate(1, new Vector2(70, 20), new Vector2(70, 30), 0.5),
+            new TrackGate(0, new Vector3(50, 0f, 20), new Vector3(50, 0f, 30), 0.0),
+            new TrackGate(1, new Vector3(70, 0f, 20), new Vector3(70, 0f, 30), 0.5),
         };
         var track = BuildMinimalTrack(twoGates);
         var car = MakeCar(1);
 
-        car.PreviousPosition = new Vector2(48, 25);
-        car.Position = new Vector2(52, 25);
+        car.PreviousPosition = new Vector3(48, 0f, 25);
+        car.Position = new Vector3(52, 0f, 25);
         _scorer.Update(track, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
 
-        car.PreviousPosition = new Vector2(68, 25);
-        car.Position = new Vector2(72, 25);
+        car.PreviousPosition = new Vector3(68, 0f, 25);
+        car.Position = new Vector3(72, 0f, 25);
         _scorer.Update(track, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(1);
     }
@@ -389,8 +389,8 @@ public sealed class LapScorerTests
     public async Task Update_CrossGateFromBelow_Registers()
     {
         var car = MakeCar(2);
-        car.PreviousPosition = new Vector2(50 - 2, 25);
-        car.Position = new Vector2(50 + 2, 28);
+        car.PreviousPosition = new Vector3(50 - 2, 0f, 25);
+        car.Position = new Vector3(50 + 2, 0f, 28);
         _scorer.Update(ThreeGateTrack, car);
         await Assert.That(car.CurrentGateIndex).IsEqualTo(0);
     }

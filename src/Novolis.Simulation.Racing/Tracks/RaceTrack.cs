@@ -16,7 +16,7 @@ public sealed class RaceTrack
     /// <summary>Cells.</summary>
     public required TrackCell[,] Cells { get; init; }
     /// <summary>CenterLineSamples.</summary>
-    public required IReadOnlyList<Vector2> CenterLineSamples { get; init; }
+    public required IReadOnlyList<Vector3> CenterLineSamples { get; init; }
     /// <summary>Gates.</summary>
     public required IReadOnlyList<TrackGate> Gates { get; init; }
     /// <summary>StartPose.</summary>

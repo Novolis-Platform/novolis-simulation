@@ -6,4 +6,4 @@ using System.Numerics;
 /// <summary>ControlPoints.</summary>
 /// <summary>SplineLoop operation.</summary>
 /// <summary>Represents SplineLoop.</summary>
-public sealed record SplineLoop(IReadOnlyList<Vector2> ControlPoints, bool Closed = true);
+public sealed record SplineLoop(IReadOnlyList<Vector3> ControlPoints, bool Closed = true);
