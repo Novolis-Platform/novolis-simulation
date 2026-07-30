@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Humanoid.Skinning</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Humanoid.Skinning</AssemblyName>
+    <PackageId>Novolis.Simulation.Humanoid.Skinning</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>CPU linear-blend skinning for Simulation.Humanoid poses over Math.Geometry triangle meshes.</Description>
+    <PackageTags>simulation;humanoid;skinning;mesh</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj" />
+    <PackageReference Include="Novolis.Math.Geometry" />
+  </ItemGroup>
+</Project>

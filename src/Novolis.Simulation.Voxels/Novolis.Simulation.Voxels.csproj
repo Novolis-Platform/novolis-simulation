@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Voxels</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Voxels</AssemblyName>
+    <PackageId>Novolis.Simulation.Voxels</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Chunked voxel world (16³), streaming, terrain fill, dig/place — Minecraft-clone capable storage.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Novolis.Math.Arrays" />
+  </ItemGroup>
+</Project>

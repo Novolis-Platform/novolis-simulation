@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Humanoid.Physics</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Humanoid.Physics</AssemblyName>
+    <PackageId>Novolis.Simulation.Humanoid.Physics</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Bridge between Simulation.Humanoid poses and Physics.Joints ragdoll spheres.</Description>
+    <PackageTags>simulation;humanoid;ragdoll;physics</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj" />
+    <PackageReference Include="Novolis.Physics.Joints" />
+    <PackageReference Include="Novolis.Physics.Collision.Simple" />
+  </ItemGroup>
+</Project>

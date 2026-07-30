@@ -8,9 +8,15 @@
 |---------|---------|----------------|
 | `Novolis.Simulation` | `dotnet add package Novolis.Simulation` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation/README.md) |
 | `Novolis.Simulation.Abstractions` | `dotnet add package Novolis.Simulation.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Abstractions/README.md) |
+| `Novolis.Simulation.Humanoid` | `dotnet add package Novolis.Simulation.Humanoid` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Humanoid/README.md) |
 | `Novolis.Simulation.Kinematics` | `dotnet add package Novolis.Simulation.Kinematics` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Kinematics/README.md) |
+| `Novolis.Simulation.Mesh` | `dotnet add package Novolis.Simulation.Mesh` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Mesh/README.md) |
 | `Novolis.Simulation.Racing` | `dotnet add package Novolis.Simulation.Racing` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Racing/README.md) |
+| `Novolis.Simulation.Replay` | `dotnet add package Novolis.Simulation.Replay` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Replay/README.md) |
+| `Novolis.Simulation.Tiles` | `dotnet add package Novolis.Simulation.Tiles` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Tiles/README.md) |
 | `Novolis.Simulation.View` | `dotnet add package Novolis.Simulation.View` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.View/README.md) |
+| `Novolis.Simulation.Voxels` | `dotnet add package Novolis.Simulation.Voxels` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Voxels/README.md) |
+| `Novolis.Simulation.Voxels.Meshing` | `dotnet add package Novolis.Simulation.Voxels.Meshing` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.Voxels.Meshing/README.md) |
 | `Novolis.Simulation.World` | `dotnet add package Novolis.Simulation.World` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.World/README.md) |
 | `Novolis.Simulation.World.Builders` | `dotnet add package Novolis.Simulation.World.Builders` | [README](https://github.com/Novolis-Platform/novolis-simulation/blob/main/src/Novolis.Simulation.World.Builders/README.md) |
 
@@ -27,10 +33,17 @@ For NuGet.org and Visual Studio, the **embedded** README.md inside each package 
 | Package | Role |
 |---------|------|
 | `Novolis.Simulation.World` | Planar occupancy on XZ (+Y up): move, LOS, raycast |
-| `Novolis.Simulation.View` | All platform cameras: `YawPitchController`, third-person, orbit, `ViewPose`, … |
+| `Novolis.Simulation.View` | Platform cameras: FP/TP/orbit, `LookIntent`/`MoveIntent`, `CharacterMotor`, `ViewPose` |
+| `Novolis.Simulation.Humanoid` | Mixamo/Unity biped: T-pose, FK/IK, animation clips (mocap/retarget target) |
+| `Novolis.Simulation.Humanoid.Physics` | Bridge to `Physics.Joints` ragdoll spheres |
+| `Novolis.Simulation.Humanoid.Import` | BVH mocap + lightweight glTF joint import |
+| `Novolis.Simulation.Humanoid.Skinning` | CPU linear-blend skinning over `TriangleMesh` |
+| `Novolis.Simulation.Tiles` | PA-style layers, edge walls/doors, room flood-fill, grid A* |
+| `Novolis.Simulation.Voxels` | Chunked block world, streamer, dig/place, terrain fill |
+| `Novolis.Simulation.Voxels.Meshing` | Face-culled / greedy mesh → `Math.Geometry` (no GPU) |
 | `Novolis.Simulation.Kinematics` | `PlanarAgent.Move` (grid and/or BVH) |
 | `Novolis.Simulation.World.Builders` | `OccupancyColumnMeshBuilder` → `BvhStaticWorld` |
-| `Novolis.Simulation` | Meta package referencing all of the above |
+| `Novolis.Simulation` | Meta package referencing core facets |
 
 ## Build
 

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Humanoid</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Humanoid</AssemblyName>
+    <PackageId>Novolis.Simulation.Humanoid</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Standard Mixamo/Unity-compatible humanoid skeleton: bind pose, FK/IK, and animation clips for rigging and mocap retarget.</Description>
+    <PackageTags>simulation;humanoid;skeleton;rig;mocap;mixamo;animation</PackageTags>
+  </PropertyGroup>
+</Project>

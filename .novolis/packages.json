@@ -64,6 +64,43 @@
         "build/**",
         "global.json"
       ]
+    },
+    "Novolis.Simulation.Humanoid": {
+      "project": "src/Novolis.Simulation.Humanoid/Novolis.Simulation.Humanoid.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Humanoid/**",
+        "tests/Novolis.Simulation.Unit/Humanoid/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.Humanoid.Physics": {
+      "project": "src/Novolis.Simulation.Humanoid.Physics/Novolis.Simulation.Humanoid.Physics.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Humanoid.Physics/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.Humanoid.Import": {
+      "project": "src/Novolis.Simulation.Humanoid.Import/Novolis.Simulation.Humanoid.Import.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Humanoid.Import/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
+    },
+    "Novolis.Simulation.Humanoid.Skinning": {
+      "project": "src/Novolis.Simulation.Humanoid.Skinning/Novolis.Simulation.Humanoid.Skinning.csproj",
+      "paths": [
+        "src/Novolis.Simulation.Humanoid.Skinning/**",
+        "Directory.Build.props",
+        "build/**",
+        "global.json"
+      ]
     }
   }
 }

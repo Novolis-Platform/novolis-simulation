@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Humanoid.Import</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Humanoid.Import</AssemblyName>
+    <PackageId>Novolis.Simulation.Humanoid.Import</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>BVH mocap and lightweight glTF joint import retargeted into Simulation.Humanoid clips.</Description>
+    <PackageTags>simulation;humanoid;bvh;mocap;gltf;import</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj" />
+  </ItemGroup>
+</Project>

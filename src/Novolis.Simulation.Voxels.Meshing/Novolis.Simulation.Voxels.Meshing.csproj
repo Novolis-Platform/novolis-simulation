@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Voxels.Meshing</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Voxels.Meshing</AssemblyName>
+    <PackageId>Novolis.Simulation.Voxels.Meshing</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Face-culled and greedy voxel meshing to Math.Geometry EditableMesh / TriangleMesh.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Novolis.Math.Arrays" />
+    <PackageReference Include="Novolis.Math.Geometry" />
+    <ProjectReference Include="..\Novolis.Simulation.Voxels\Novolis.Simulation.Voxels.csproj" />
+  </ItemGroup>
+</Project>

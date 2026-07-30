@@ -9,8 +9,16 @@
     <Project Path="src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
     <Project Path="src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
     <Project Path="src/Novolis.Simulation.Mesh/Novolis.Simulation.Mesh.csproj" />
+    <Project Path="src/Novolis.Simulation.Tiles/Novolis.Simulation.Tiles.csproj" />
+    <Project Path="src/Novolis.Simulation.Voxels/Novolis.Simulation.Voxels.csproj" />
+    <Project Path="src/Novolis.Simulation.Voxels.Meshing/Novolis.Simulation.Voxels.Meshing.csproj" />
+    <Project Path="src/Novolis.Simulation.Humanoid/Novolis.Simulation.Humanoid.csproj" />
+    <Project Path="src/Novolis.Simulation.Humanoid.Physics/Novolis.Simulation.Humanoid.Physics.csproj" />
+    <Project Path="src/Novolis.Simulation.Humanoid.Import/Novolis.Simulation.Humanoid.Import.csproj" />
+    <Project Path="src/Novolis.Simulation.Humanoid.Skinning/Novolis.Simulation.Humanoid.Skinning.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Simulation.Unit/Novolis.Simulation.Unit.csproj" />
+    <Project Path="tests/Novolis.Simulation.Humanoid.Unit/Novolis.Simulation.Humanoid.Unit.csproj" />
     </Folder>
 </Solution>

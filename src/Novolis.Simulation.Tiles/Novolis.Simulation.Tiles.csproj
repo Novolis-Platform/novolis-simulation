@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Tiles</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Tiles</AssemblyName>
+    <PackageId>Novolis.Simulation.Tiles</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Prison Architect–style layered tile maps, edge walls/doors, room flood-fill, and grid A*.</Description>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Novolis.Math.Arrays" />
+  </ItemGroup>
+</Project>

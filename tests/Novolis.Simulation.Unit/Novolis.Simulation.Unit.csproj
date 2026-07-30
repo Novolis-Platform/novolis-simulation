@@ -21,5 +21,9 @@
     <ProjectReference Include="../../src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.Kinematics/Novolis.Simulation.Kinematics.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.Abstractions/Novolis.Simulation.Abstractions.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Tiles/Novolis.Simulation.Tiles.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Voxels/Novolis.Simulation.Voxels.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Voxels.Meshing/Novolis.Simulation.Voxels.Meshing.csproj" />
+    <ProjectReference Include="../../src/Novolis.Simulation.Humanoid/Novolis.Simulation.Humanoid.csproj" />
   </ItemGroup>
 </Project>
