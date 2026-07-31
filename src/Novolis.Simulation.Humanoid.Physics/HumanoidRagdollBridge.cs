@@ -30,6 +30,9 @@ public static class HumanoidRagdollBridge
         RagdollHumanoidPreset.BuildStanding(ground, spheres, joints, swingLimits, hingeLimits, runtimeStiffness);
         ApplyBindToSpheres(bind, spheres);
         RelengthJoints(spheres, joints);
+        // Limits were authored for the standing layout; rebuild so rest frames match bind proportions
+        // (otherwise angular solvers fight distance joints and inject jitter / stretch).
+        RagdollHumanoidPreset.BuildLimits(spheres, swingLimits, hingeLimits, runtimeStiffness);
     }
 
     /// <summary>Writes bind-pose bone positions into ragdoll spheres.</summary>

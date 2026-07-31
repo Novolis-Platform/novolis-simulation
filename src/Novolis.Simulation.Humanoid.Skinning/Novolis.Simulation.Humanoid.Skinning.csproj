@@ -5,8 +5,8 @@
     <AssemblyName>Novolis.Simulation.Humanoid.Skinning</AssemblyName>
     <PackageId>Novolis.Simulation.Humanoid.Skinning</PackageId>
     <IsPackable>true</IsPackable>
-    <Description>CPU linear-blend skinning for Simulation.Humanoid poses over Math.Geometry triangle meshes.</Description>
-    <PackageTags>simulation;humanoid;skinning;mesh</PackageTags>
+    <Description>CPU linear-blend skinning and AdaptiveMesh person hulls for Simulation.Humanoid / ragdoll graphs.</Description>
+    <PackageTags>simulation;humanoid;skinning;mesh;adaptive</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj" />
