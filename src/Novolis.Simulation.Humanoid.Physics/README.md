@@ -11,6 +11,11 @@ dotnet add package Novolis.Simulation.Humanoid.Physics
 ## Quick start
 
 ```csharp
+using Novolis.Physics.Collision.Simple;
+using Novolis.Physics.Joints;
+using Novolis.Simulation.Humanoid;
+using Novolis.Simulation.Humanoid.Physics;
+
 var bind = HumanoidBindPose.CreateDefaultTPose();
 var spheres = new List<SphereState>();
 var joints = new List<DistanceJoint>();
@@ -22,3 +27,17 @@ HumanoidRagdollBridge.BuildStandingFromBind(bind, spheres, joints, swings, hinge
 var world = HumanoidPoseSolver.SolveWorld(bind, HumanoidPose.FromBind(bind));
 HumanoidRagdollBridge.ApplyWorldPoseToSpheres(world, spheres);
 ```
+
+## API
+
+| Type | Role |
+|------|------|
+| `HumanoidRagdollBridge` | `SphereCount`; `BuildStandingFromBind`; `ApplyBindToSpheres`; `ApplyWorldPoseToSpheres`; `WorldPoseFromSpheres` |
+
+## Related
+
+| Package | When to use |
+|---------|-------------|
+| `Novolis.Simulation.Humanoid` | Poses, bind frames, bone schema |
+| `Novolis.Physics.Joints` | `RagdollHumanoidPreset`, joint solvers |
+| `Novolis.Simulation.Humanoid.Skinning` | Deform mesh to ragdoll spheres |

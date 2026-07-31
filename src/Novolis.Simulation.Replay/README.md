@@ -30,7 +30,24 @@ var timeline = recorder.Build();
 var ok = ReplayPlayback.VerifyAllSteps(timeline, myRunner);
 ```
 
+## API
+
+| Type | Role |
+|------|------|
+| `SimulationTimeline<TState>` | `Initial` + ordered `Steps` |
+| `SimulationStepRecord<TState>` | Step metadata and end state |
+| `InMemorySimulationRecorder<TState>` | `SetInitial`, `RecordStep`, `Build` |
+| `ReplayPlayback` | `GetEndStateAt`, `VerifyStep`, `VerifyAllSteps` |
+| `SimultaneousPlanBuffer<TPlan>` | WEGO: `Submit`, `PendingPlans`, `Clear` |
+| `ISimulationStepRunner<TState>` | Deterministic step runner for verification |
+| `ISimulationEventStore<TEvent>` | Append/read event log |
+| `InMemorySimulationEventStore<TEvent>` | In-process event store |
+
 ## Related
 
-- Product event-sourced games (e.g. Star Conflicts Revolt) keep domain events in the app; use this package for **snapshot/step** replay and tests.
-- [fleetcommander-patterns-for-platform.md](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/imports-todo/fleetcommander-patterns-for-platform.md)
+| Package | When to use |
+|---------|-------------|
+| `Novolis.Simulation` | `SimulationClock` for fixed-step ticks |
+| `Novolis.Simulation.Abstractions` | `SimulationStep`, `ISimulationSystem` |
+
+Product event-sourced games keep domain events in the app; use this package for **snapshot/step** replay and tests.

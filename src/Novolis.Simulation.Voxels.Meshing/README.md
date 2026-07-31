@@ -16,8 +16,22 @@ using Novolis.Simulation.Voxels.Meshing;
 
 var world = new ChunkedVoxelWorld();
 // ... fill blocks ...
-var mesh = GreedyMesher.Build(world, new(0, 0, 0));
+var mesh = GreedyMesher.Build(world, new ChunkCoord3(0, 0, 0));
 var tris = mesh.ToTriangleMesh();
 ```
 
 No Rendering/Raylib references — apps upload the mesh to their GPU backend.
+
+## API
+
+| Type | Role |
+|------|------|
+| `GreedyMesher` | `Build(world, chunkCoord)` → merged quads as `EditableMesh` |
+| `FaceCulledMesher` | `Build(...)`, `CountExposedFaces(...)` per-face meshing |
+
+## Related
+
+| Package | When to use |
+|---------|-------------|
+| `Novolis.Simulation.Voxels` | `ChunkedVoxelWorld` storage |
+| `Novolis.Math.Geometry` | `EditableMesh`, `TriangleMesh` output |

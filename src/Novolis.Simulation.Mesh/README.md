@@ -20,7 +20,19 @@ var path = MeshPathfinder.FindPath(state, MeshTestGraph.Sol, MeshTestGraph.Wolf)
 state = DefaultMeshPipeline.Advance(state);
 ```
 
-## Related packages
+## API
+
+| Type | Role |
+|------|------|
+| `MeshState` | Nodes, edges, packets, mailboxes |
+| `MeshEngine` | Composable `IMeshStep` pipeline |
+| `DefaultMeshPipeline` | Stock publish/flood/TTL/mailbox steps |
+| `MeshPathfinder` | `FindPath(state, origin, destination)` |
+| `PublishEngine`, `FloodEngine`, `TtlEngine` | Traffic layer processors |
+| `MailboxEngine`, `FeedEngine` | Store-and-forward delivery |
+| `MeshTestGraph` | Sample topologies for tests |
+
+## Related
 
 | Package | When to use |
 |---------|-------------|
@@ -30,7 +42,3 @@ state = DefaultMeshPipeline.Advance(state);
 ## More documentation
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
-
-## Support
-
-Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).

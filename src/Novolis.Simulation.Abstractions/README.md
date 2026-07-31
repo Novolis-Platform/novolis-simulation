@@ -21,17 +21,22 @@ public sealed class MySystem : ISimulationSystem
 }
 ```
 
-## Related packages
+## API
+
+| Type | Role |
+|------|------|
+| `SimulationStep` | `DeltaSeconds`, `Tick` |
+| `ISimulationObject` | `Guid Id` |
+| `ISimulationState` | `IReadOnlyList<ISimulationObject> Objects` |
+| `ISimulationSystem` | `Step(state, step)` |
+
+## Related
 
 | Package | When to use |
 |---------|-------------|
-| `Novolis.Simulation.World` | Concrete world state |
-| `Novolis.Simulation` | Meta-package for the core stack |
+| `Novolis.Simulation` | `SimulationClock` and meta-package |
+| `Novolis.Simulation.Replay` | Tick timelines and verification |
 
 ## More documentation
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
-
-## Support
-
-Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).

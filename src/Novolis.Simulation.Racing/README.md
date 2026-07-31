@@ -13,13 +13,30 @@ dotnet add package Novolis.Simulation.Racing
 ## Quick start
 
 ```csharp
+using Novolis.Simulation.Racing.Cars;
+using Novolis.Simulation.Racing.Race;
 using Novolis.Simulation.Racing.Tracks;
 
-var track = BuiltInTracks.Oval(rasterWidth: 128, rasterHeight: 96);
-var simulation = new RaceSimulation(track);
+var track = new TrackBuilder().Build(BuiltInTracks.Oval);
+var simulation = new RaceSimulation(track, [new FullThrottleController()]);
+simulation.Reset();
+simulation.Tick();
 ```
 
-## Related packages
+## API
+
+| Type | Role |
+|------|------|
+| `RaceSimulation` | `Track`, `Controllers`, `State`, `Reset`, `Tick` |
+| `RaceTrack` | Spline loop, gates, progress map |
+| `BuiltInTracks` | `Circle`, `Oval`, `Stadium`, `Chicane`, …; `All`, `ById` |
+| `TrackBuilder` | `Build(ITrackDefinition)` |
+| `DefaultCarSensorModel` | Raycast sensor readings |
+| `DefaultRewardModel` | Lap/progress reward breakdown |
+| `LapScorer` | Lap timing and standings |
+| `RaceAsciiRenderer` | Terminal debug view |
+
+## Related
 
 | Package | When to use |
 |---------|-------------|
@@ -29,7 +46,3 @@ var simulation = new RaceSimulation(track);
 ## More documentation
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
-
-## Support
-
-Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).

@@ -18,7 +18,13 @@ using Novolis.Simulation.Kinematics;
 var next = PlanarAgent.Move(walls, position, delta, radius: 0.35f, cellSize: 1f, staticWorld);
 ```
 
-## Related packages
+## API
+
+| Type | Role |
+|------|------|
+| `PlanarAgent` | `Move(walls, position, delta, radius, cellSize, staticWorld?, sweepCenterY?)` → resolved position |
+
+## Related
 
 | Package | When to use |
 |---------|-------------|
@@ -28,7 +34,3 @@ var next = PlanarAgent.Move(walls, position, delta, radius: 0.35f, cellSize: 1f,
 ## More documentation
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
-
-## Support
-
-Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).

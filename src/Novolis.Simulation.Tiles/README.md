@@ -26,4 +26,21 @@ var batch = new BuildBatch(16, 16);
 batch.TouchCell(1, 1);
 ```
 
-Depends on `Novolis.Math.Arrays` only (walkability grids are compatible with `Novolis.Simulation.World.PlanarOccupancy`).
+## API
+
+| Type | Role |
+|------|------|
+| `TileMap2D` | Layered floor/object tiles |
+| `WallEdgeMap` | H/V edge walls and doors; `BlocksStep` |
+| `WallEdge` | `Solid`, `OpenDoor`, `None` presets |
+| `RoomFloodFill` | `LabelRooms`, `CountRooms` |
+| `GridPathfinder` | `FindPath` on wall grid |
+| `WalkabilityMask` | Blocked cells from object layer |
+| `BuildBatch` | Dirty rect tracking for incremental rebuilds |
+
+## Related
+
+| Package | When to use |
+|---------|-------------|
+| `Novolis.Simulation.World` | `PlanarOccupancy` for agent movement |
+| `Novolis.Math.Arrays` | Compatible walkability grids |

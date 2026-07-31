@@ -19,7 +19,18 @@ var world = new SimulationWorld(occupancyGrid, cellSize: 1f);
 var moved = PlanarOccupancy.TryMove(world.Occupancy, position, delta, radius: 0.4f, world.CellSize);
 ```
 
-## Related packages
+## API
+
+| Type | Role |
+|------|------|
+| `SimulationWorld` | Wraps `DenseGrid<byte>` occupancy + cell size |
+| `BoundedHeightfield` | Height sampling, projectile contact, surface projection |
+| `PlanarOccupancy` | `TryMove`, `OverlapsWall`, `PushOutOfWalls`, raycasts, line-of-sight |
+| `RoomInteriorBounds` | Enclosed room clamp volume |
+| `WorldExtentOptions` | Extent meters and collision/draw resolution |
+| `PlanarDiscHit` | Raycast hit distance along ray |
+
+## Related
 
 | Package | When to use |
 |---------|-------------|
@@ -29,7 +40,3 @@ var moved = PlanarOccupancy.TryMove(world.Occupancy, position, delta, radius: 0.
 ## More documentation
 
 - [Design](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/design.md)
-
-## Support
-
-Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).
