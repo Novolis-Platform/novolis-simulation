@@ -11,7 +11,7 @@ GPU skinning stays in apps / Rendering backends.
 dotnet add package Novolis.Simulation.Humanoid.Skinning
 ```
 
-## Adaptive person (ragdoll)
+## Quick start
 
 ```csharp
 var centers = /* 11 ragdoll sphere positions */;

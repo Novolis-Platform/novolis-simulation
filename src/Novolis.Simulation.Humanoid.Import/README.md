@@ -8,7 +8,7 @@ BVH mocap and lightweight glTF joint import into `Novolis.Simulation.Humanoid` c
 dotnet add package Novolis.Simulation.Humanoid.Import
 ```
 
-## BVH
+## Quick start
 
 ```csharp
 var clip = BvhHumanoidImporter.ImportFile("walk.bvh"); // cm→m by default
