@@ -31,6 +31,9 @@ public sealed class OrbitCameraRig
     /// <summary>MaxDistance.</summary>
     public float MaxDistance { get; set; } = 24_000f;
 
+    /// <summary>MinPitch (radians). CAD viewports typically use −π/2…+π/2; flight defaults stay near 0.</summary>
+    public float MinPitch { get; set; } = -0.1f;
+
     /// <summary>FieldOfViewDegrees.</summary>
     public float FieldOfViewDegrees { get; set; } = 52f;
 
@@ -50,7 +53,7 @@ public sealed class OrbitCameraRig
     {
         Yaw += deltaYaw;
         Pitch += deltaPitch;
-        Pitch = System.Math.Clamp(Pitch, -0.1f, PitchLimit);
+        Pitch = System.Math.Clamp(Pitch, MinPitch, PitchLimit);
     }
 
     /// <summary>AdjustDistance operation.</summary>
