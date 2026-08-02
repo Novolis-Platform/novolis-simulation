@@ -11,6 +11,19 @@ GPU skinning stays in apps / Rendering backends.
 dotnet add package Novolis.Simulation.Humanoid.Skinning
 ```
 
+**Prerequisites:** [.NET 10 SDK](https://dotnet.microsoft.com/download) (`net10.0`).
+
+## Quick start
+
+```csharp
+using Novolis.Simulation.Humanoid;
+using Novolis.Simulation.Humanoid.Skinning;
+
+var bind = HumanoidBindPose.CreateDefaultTPose();
+var skin = new SkinnedHumanoidMesh(mesh, weights, SkinnedHumanoidMesh.CreateTranslationInverseBinds(bind));
+var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
+```
+
 ## Unrigged FBX → animatable (auto-skin)
 
 ```csharp
