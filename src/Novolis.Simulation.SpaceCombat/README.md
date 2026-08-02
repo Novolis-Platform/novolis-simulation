@@ -1,6 +1,6 @@
 # Novolis.Simulation.SpaceCombat
 
-Headless arcade space combat: craft profiles, intent-driven flight, laser bolts, targeting, and dual-role mission phases (`Freighter` → `Transfer` → `Fighter`).
+Headless arcade space combat: craft profiles, intent-driven flight, laser bolts, targeting, dual-role mission phases (`Freighter` → `Transfer` → `Fighter`), and crew stations with heuristic (optionally neural-host) pilot/gunner AI.
 
 No Raylib dependency. Pair with `Novolis.Simulation.View.CraftCamera` for cockpit/chase poses.
 
@@ -28,14 +28,17 @@ var session = new MissionSession(new MissionDescriptor
     DestroyRequired = 3,
 });
 session.Begin();
-session.Tick(new FlightIntent { ThrottleUp = 1f, Fire = true }, 1f / 60f);
+session.CrewStation = CrewStation.Gunner; // AI pilots; human aims/fires
+session.Tick(new FlightIntent { Fire = true }, 1f / 60f);
 ```
 
 ## API
 
 | Type | Role |
 |------|------|
-| `MissionSession` | Dual-role phases, craft state, bolts, targets |
+| `MissionSession` | Dual-role phases, craft state, bolts, targets, crew AI |
+| `CrewStation` | `Dual` / `Pilot` (AI gunner) / `Gunner` (AI pilot) |
+| `HeuristicPilotAi` / `HeuristicGunnerAi` | Default crew controllers |
 | `MissionDescriptor` | Profiles, protect timer, kill goals |
 | `CraftProfile` | Speed, turn, hull, hit radius |
 | `FlightIntent` | Throttle / pitch / yaw / fire / transfer |
@@ -46,4 +49,5 @@ session.Tick(new FlightIntent { ThrottleUp = 1f, Fire = true }, 1f / 60f);
 | Package | When to use |
 |---------|-------------|
 | `Novolis.Simulation.View` | `CraftCamera` cockpit / chase-aft poses |
+| `Novolis.MachineLearning.Neural` | `ContinuousActionPolicy` for neural crew imitation |
 | `Novolis.Simulation` | Core simulation stack |

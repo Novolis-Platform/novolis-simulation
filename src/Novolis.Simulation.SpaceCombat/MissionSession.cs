@@ -11,6 +11,9 @@ public sealed class MissionSession
     private float _playerFireCooldown;
     private int _kills;
     private bool _transferArmed;
+    private IFlightController _crewPilotAi;
+    private IFlightController _crewGunnerAi;
+    private IFlightController _freighterPilotAi;
 
     public MissionSession(MissionDescriptor descriptor, int seed = 42)
     {
@@ -33,6 +36,10 @@ public sealed class MissionSession
         _protectTimer = descriptor.ProtectSeconds;
         Phase = MissionPhase.Freighter;
         Player = Freighter;
+        _crewPilotAi = new HeuristicPilotAi();
+        _crewGunnerAi = new HeuristicGunnerAi();
+        _freighterPilotAi = new HeuristicPilotAi(engageDistance: 70f, turnGain: 0.028f);
+        CrewStation = CrewStation.Dual;
     }
 
     public MissionDescriptor Descriptor { get; }
@@ -48,33 +55,70 @@ public sealed class MissionSession
     public bool CanTransfer => Phase == MissionPhase.Freighter && _transferArmed;
     public int ActiveHostiles => Hostiles.Count(h => h.Active);
 
+    /// <summary>
+    /// Human crew role. <see cref="CrewStation.Pilot"/> enables AI gunner;
+    /// <see cref="CrewStation.Gunner"/> enables AI pilot.
+    /// </summary>
+    public CrewStation CrewStation { get; set; }
+
+    /// <summary>Optional override for crew AI (e.g. neural-imitation controllers).</summary>
+    public void SetCrewControllers(
+        IFlightController? pilot = null,
+        IFlightController? gunner = null,
+        IFlightController? freighterPilot = null)
+    {
+        if (pilot is not null)
+            _crewPilotAi = pilot;
+        if (gunner is not null)
+            _crewGunnerAi = gunner;
+        if (freighterPilot is not null)
+            _freighterPilotAi = freighterPilot;
+    }
+
     public void Begin()
     {
         SpawnWave(Math.Min(3, Descriptor.HostileCount));
         _transferArmed = false;
     }
 
-    public void Tick(in FlightIntent intent, float dt)
+    public void Tick(in FlightIntent playerIntent, float dt)
     {
         if (Phase is MissionPhase.Complete or MissionPhase.Failed)
             return;
 
-        if (Phase == MissionPhase.Freighter && intent.Transfer && CanTransfer)
+        if (Phase == MissionPhase.Freighter && playerIntent.Transfer && CanTransfer)
             TransferToFighter();
+
+        var intent = ComposePlayerIntent(playerIntent, dt);
 
         var controlled = Player;
         if (controlled.PlayerControlled)
             ArcadeFlight.Apply(controlled, intent, dt);
 
-        if (Phase == MissionPhase.Freighter && !Freighter.PlayerControlled)
-            DriftFreighter(dt);
-
-        if (Phase == MissionPhase.Fighter && !Freighter.PlayerControlled)
-            DriftFreighter(dt);
+        if (!Freighter.PlayerControlled && Freighter.Active)
+            TickFreighterAi(dt);
 
         UpdateHostiles(dt);
         UpdateCombat(intent, dt);
         EvaluateObjectives(dt);
+    }
+
+    private FlightIntent ComposePlayerIntent(in FlightIntent playerIntent, float dt)
+    {
+        if (!Player.PlayerControlled || CrewStation == CrewStation.Dual)
+            return playerIntent;
+
+        var observation = CraftObservation.FromSession(this, Player, dt);
+        var aiPilot = _crewPilotAi.Tick(observation);
+        var aiGunner = _crewGunnerAi.Tick(observation);
+        return CrewIntentComposer.Compose(CrewStation, playerIntent, aiPilot, aiGunner);
+    }
+
+    private void TickFreighterAi(float dt)
+    {
+        var observation = CraftObservation.FromSession(this, Freighter, dt);
+        var intent = _freighterPilotAi.Tick(observation);
+        ArcadeFlight.Apply(Freighter, intent, dt);
     }
 
     public CraftState? LockTarget =>
@@ -92,13 +136,6 @@ public sealed class MissionSession
         Player = Fighter;
         Phase = MissionPhase.Fighter;
         SpawnWave(Descriptor.HostileCount - ActiveHostiles);
-    }
-
-    private void DriftFreighter(float dt)
-    {
-        // Autopilot: hold course slowly forward
-        Freighter.Speed = Math.Clamp(Freighter.Speed, Freighter.Profile.MinSpeed, Freighter.Profile.MaxSpeed * 0.7f);
-        Freighter.Position += Freighter.Forward * (Freighter.Speed * dt);
     }
 
     private void UpdateHostiles(float dt)
