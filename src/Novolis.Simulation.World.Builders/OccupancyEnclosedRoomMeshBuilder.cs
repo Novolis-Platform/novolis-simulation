@@ -1,4 +1,5 @@
 using System.Numerics;
+using Novolis.Math.Geometry;
 using Novolis.Physics.Collision.Simple;
 
 namespace Novolis.Simulation.World.Builders;
@@ -64,6 +65,6 @@ public static class OccupancyEnclosedRoomMeshBuilder
             }
         }
 
-        return new BvhStaticWorld(new StaticTriangleMesh(verts.ToArray(), tris.ToArray()));
+        return new BvhStaticWorld(new TriangleMesh(verts.ToArray(), tris.ToArray()));
     }
 }

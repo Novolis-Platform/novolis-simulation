@@ -163,6 +163,6 @@ public class RagdollAdaptiveBodyTests
             new Vector3(-half, 0f, half),
         };
         var indices = new[] { 0, 1, 2, 0, 2, 3 };
-        return new BvhStaticWorld(new StaticTriangleMesh(verts, indices));
+        return new BvhStaticWorld(new TriangleMesh(verts, indices));
     }
 }

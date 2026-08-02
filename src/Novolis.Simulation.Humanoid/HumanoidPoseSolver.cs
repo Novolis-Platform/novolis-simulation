@@ -69,4 +69,38 @@ public static class HumanoidPoseSolver
         world.Positions.CopyTo(copy);
         return copy;
     }
+
+    /// <summary>
+    /// Extracts a local <see cref="HumanoidPose"/> from a solved world pose so clips / further FK
+    /// can consume IK results. Hips local rotation equals world rotation (root has no parent).
+    /// Child locals are <c>Inverse(parentWorld) * childWorld</c>.
+    /// </summary>
+    /// <remarks>
+    /// Re-running <see cref="SolveWorld"/> after bake restores hierarchical bind-length positions;
+    /// free mid-joint offsets from IK are not preserved as positions, only as aiming rotations.
+    /// </remarks>
+    public static void BakeLocal(HumanoidBindPose bind, HumanoidWorldPose world, HumanoidPose destination)
+    {
+        ArgumentNullException.ThrowIfNull(bind);
+        ArgumentNullException.ThrowIfNull(world);
+        ArgumentNullException.ThrowIfNull(destination);
+
+        destination.RootTranslation = world.Position(HumanoidBone.Hips);
+
+        for (var i = 0; i < (int)HumanoidBone.Count; i++)
+        {
+            var bone = (HumanoidBone)i;
+            var parentIdx = HumanoidHierarchy.Parent(bone);
+            if (parentIdx < 0)
+            {
+                destination[bone] = Quaternion.Normalize(world.Rotation(bone));
+                continue;
+            }
+
+            var parentRot = world.Rotation((HumanoidBone)parentIdx);
+            var childRot = world.Rotation(bone);
+            var local = Quaternion.Normalize(Quaternion.Inverse(parentRot) * childRot);
+            destination[bone] = local;
+        }
+    }
 }

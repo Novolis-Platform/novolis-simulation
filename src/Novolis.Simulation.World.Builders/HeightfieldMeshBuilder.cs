@@ -1,4 +1,5 @@
 using System.Numerics;
+using Novolis.Math.Geometry;
 using Novolis.Physics.Abstractions;
 using Novolis.Physics.Collision.Simple;
 using Novolis.Simulation.World;
@@ -41,7 +42,7 @@ public static class HeightfieldMeshBuilder
             tris.Add(i01);
         }
 
-        var collision = new BvhStaticWorld(new StaticTriangleMesh(verts, tris.ToArray()));
+        var collision = new BvhStaticWorld(new TriangleMesh(verts, tris.ToArray()));
 
         var drawVertices = new Vector3[(drawCells + 1) * (drawCells + 1)];
         for (var z = 0; z <= drawCells; z++)

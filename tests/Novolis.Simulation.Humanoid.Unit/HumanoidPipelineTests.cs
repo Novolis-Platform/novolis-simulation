@@ -76,6 +76,128 @@ public class HumanoidPipelineTests
     }
 
     [Test]
+    public async Task BvhImporter_RestBind_HasPelvisWidth()
+    {
+        // Prefer shipped CMU clip when the dogfood tree is checked out beside simulation.
+        var shipped = Path.GetFullPath(Path.Combine(
+            AppContext.BaseDirectory, "..", "..", "..", "..", "..", "..",
+            "novolis-dogfooding", "apps", "avalonia", "CharacterLab", "assets", "mocap", "02_01.bvh"));
+        if (!File.Exists(shipped))
+        {
+            // Minimal hierarchy: hip sockets 20 units apart → ~0.2 m after height normalize.
+            const string bvh = """
+                HIERARCHY
+                ROOT Hips
+                {
+                  OFFSET 0 0 0
+                  CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+                  JOINT LeftUpLeg
+                  {
+                    OFFSET 10 -2 0
+                    CHANNELS 3 Zrotation Yrotation Xrotation
+                    JOINT LeftLeg
+                    {
+                      OFFSET 0 -40 0
+                      CHANNELS 3 Zrotation Yrotation Xrotation
+                      JOINT LeftFoot
+                      {
+                        OFFSET 0 -40 0
+                        CHANNELS 3 Zrotation Yrotation Xrotation
+                        End Site
+                        {
+                          OFFSET 0 -5 0
+                        }
+                      }
+                    }
+                  }
+                  JOINT RightUpLeg
+                  {
+                    OFFSET -10 -2 0
+                    CHANNELS 3 Zrotation Yrotation Xrotation
+                    JOINT RightLeg
+                    {
+                      OFFSET 0 -40 0
+                      CHANNELS 3 Zrotation Yrotation Xrotation
+                      JOINT RightFoot
+                      {
+                        OFFSET 0 -40 0
+                        CHANNELS 3 Zrotation Yrotation Xrotation
+                        End Site
+                        {
+                          OFFSET 0 -5 0
+                        }
+                      }
+                    }
+                  }
+                  JOINT LowerBack
+                  {
+                    OFFSET 0 20 0
+                    CHANNELS 3 Zrotation Yrotation Xrotation
+                    End Site
+                    {
+                      OFFSET 0 40 0
+                    }
+                  }
+                }
+                MOTION
+                Frames: 1
+                Frame Time: 0.033333
+                0 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                """;
+            var (_, mini) = BvhHumanoidImporter.ImportWithBind(bvh, 0.01f, null, 1.72f);
+            var w = Vector3.Distance(mini[HumanoidBone.LeftUpLeg], mini[HumanoidBone.RightUpLeg]);
+            await Assert.That(w).IsGreaterThan(0.12f);
+            return;
+        }
+
+        var (_, bind) = BvhHumanoidImporter.ImportFileWithBind(shipped, 0.01f, BvhHumanoidImporter.RenameCmuJoint, 1.72f);
+        var hipWidth = Vector3.Distance(bind[HumanoidBone.LeftUpLeg], bind[HumanoidBone.RightUpLeg]);
+        await Assert.That(hipWidth).IsGreaterThan(0.18f);
+        await Assert.That(bind[HumanoidBone.LeftFoot].Y).IsLessThan(0.15f);
+        await Assert.That(bind[HumanoidBone.Hips].Y).IsGreaterThan(0.5f);
+    }
+
+    [Test]
+    public async Task BvhImporter_FoldsCmuHipJointIntoUpLeg()
+    {
+        // LHipJoint Z=90° then LeftUpLeg identity → LeftUpLeg must carry the 90° fold.
+        const string bvh = """
+            HIERARCHY
+            ROOT Hips
+            {
+              OFFSET 0 0 0
+              CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+              JOINT LHipJoint
+              {
+                OFFSET 0 0 0
+                CHANNELS 3 Zrotation Yrotation Xrotation
+                JOINT LeftUpLeg
+                {
+                  OFFSET 1 0 0
+                  CHANNELS 3 Zrotation Yrotation Xrotation
+                  End Site
+                  {
+                    OFFSET 0 -10 0
+                  }
+                }
+              }
+            }
+            MOTION
+            Frames: 1
+            Frame Time: 0.033333
+            0 100 0 0 0 0 90 0 0 0 0 0
+            """;
+
+        var clip = BvhHumanoidImporter.Import(bvh, renameJoint: BvhHumanoidImporter.RenameCmuJoint);
+        await Assert.That(clip.Keys.Count).IsEqualTo(1);
+        await Assert.That(clip.Keys[0].LocalRotations.ContainsKey(HumanoidBone.LeftUpLeg)).IsTrue();
+        var q = clip.Keys[0].LocalRotations[HumanoidBone.LeftUpLeg];
+        var expected = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, MathF.PI / 2f);
+        var dot = MathF.Abs(Quaternion.Dot(Quaternion.Normalize(q), Quaternion.Normalize(expected)));
+        await Assert.That(dot).IsGreaterThan(0.99f);
+    }
+
+    [Test]
     public async Task GltfImporter_ReadsNamedNodes()
     {
         const string gltf = """

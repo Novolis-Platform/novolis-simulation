@@ -40,15 +40,16 @@ public sealed class HumanoidBindPose
         Set(HumanoidBone.Neck, 0f, 1.48f, 0f);
         Set(HumanoidBone.Head, 0f, 1.62f, 0f);
 
-        Set(HumanoidBone.LeftUpLeg, -0.1f, 0.9f, 0f);
-        Set(HumanoidBone.LeftLeg, -0.12f, 0.48f, 0f);
-        Set(HumanoidBone.LeftFoot, -0.12f, 0.08f, 0.04f);
-        Set(HumanoidBone.LeftToeBase, -0.12f, 0.02f, 0.14f);
+        // Hip sockets ~16 cm apart so thighs don't read as a single crotch point.
+        Set(HumanoidBone.LeftUpLeg, -0.16f, 0.9f, 0f);
+        Set(HumanoidBone.LeftLeg, -0.17f, 0.48f, 0f);
+        Set(HumanoidBone.LeftFoot, -0.17f, 0.08f, 0.04f);
+        Set(HumanoidBone.LeftToeBase, -0.17f, 0.02f, 0.14f);
 
-        Set(HumanoidBone.RightUpLeg, 0.1f, 0.9f, 0f);
-        Set(HumanoidBone.RightLeg, 0.12f, 0.48f, 0f);
-        Set(HumanoidBone.RightFoot, 0.12f, 0.08f, 0.04f);
-        Set(HumanoidBone.RightToeBase, 0.12f, 0.02f, 0.14f);
+        Set(HumanoidBone.RightUpLeg, 0.16f, 0.9f, 0f);
+        Set(HumanoidBone.RightLeg, 0.17f, 0.48f, 0f);
+        Set(HumanoidBone.RightFoot, 0.17f, 0.08f, 0.04f);
+        Set(HumanoidBone.RightToeBase, 0.17f, 0.02f, 0.14f);
 
         Set(HumanoidBone.LeftShoulder, -0.06f, 1.38f, 0f);
         Set(HumanoidBone.LeftArm, -0.22f, 1.36f, 0f);
@@ -60,6 +61,25 @@ public sealed class HumanoidBindPose
         Set(HumanoidBone.RightForeArm, 0.48f, 1.36f, 0f);
         Set(HumanoidBone.RightHand, 0.72f, 1.36f, 0f);
 
+        return pose;
+    }
+
+    /// <summary>
+    /// Builds a bind pose from explicit world positions (meters). Bones with
+    /// <paramref name="present"/> false are filled from <see cref="CreateDefaultTPose"/>.
+    /// </summary>
+    public static HumanoidBindPose FromWorldPositions(
+        ReadOnlySpan<Vector3> worldPositions,
+        ReadOnlySpan<bool> present,
+        float heightMeters = 1.8f)
+    {
+        if (worldPositions.Length < (int)HumanoidBone.Count || present.Length < (int)HumanoidBone.Count)
+            throw new ArgumentException($"Expected {(int)HumanoidBone.Count} positions/flags.");
+
+        var fallback = CreateDefaultTPose(heightMeters);
+        var pose = new HumanoidBindPose(heightMeters);
+        for (var i = 0; i < (int)HumanoidBone.Count; i++)
+            pose._world[i] = present[i] ? worldPositions[i] : fallback[(HumanoidBone)i];
         return pose;
     }
 
