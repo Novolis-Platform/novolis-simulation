@@ -7,6 +7,8 @@
     <Project Path="src/Novolis.Simulation.World.Builders/Novolis.Simulation.World.Builders.csproj" />
     <Project Path="src/Novolis.Simulation/Novolis.Simulation.csproj" />
     <Project Path="src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
+    <Project Path="src/Novolis.Simulation.SpaceCombat/Novolis.Simulation.SpaceCombat.csproj" />
+
     <Project Path="src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
     <Project Path="src/Novolis.Simulation.Mesh/Novolis.Simulation.Mesh.csproj" />
     <Project Path="src/Novolis.Simulation.Tiles/Novolis.Simulation.Tiles.csproj" />

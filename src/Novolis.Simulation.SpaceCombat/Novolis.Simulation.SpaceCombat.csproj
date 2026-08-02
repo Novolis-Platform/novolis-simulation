@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.SpaceCombat</RootNamespace>
+    <AssemblyName>Novolis.Simulation.SpaceCombat</AssemblyName>
+    <PackageId>Novolis.Simulation.SpaceCombat</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Headless arcade space combat: craft flight, bolts, targeting, dual-role mission phases.</Description>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+</Project>
+
