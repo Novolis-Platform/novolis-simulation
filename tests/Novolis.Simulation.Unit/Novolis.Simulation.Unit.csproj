@@ -13,6 +13,7 @@
     <PackageReference Include="TUnit" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="../../src/Novolis.Simulation/Novolis.Simulation.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.Racing/Novolis.Simulation.Racing.csproj" />
     <ProjectReference Include="../../src/Novolis.Simulation.SpaceCombat/Novolis.Simulation.SpaceCombat.csproj" />
 
