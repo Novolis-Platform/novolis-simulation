@@ -142,7 +142,7 @@ public class HumanoidPipelineTests
                 MOTION
                 Frames: 1
                 Frame Time: 0.033333
-                0 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
                 """;
             var (_, mini) = BvhHumanoidImporter.ImportWithBind(bvh, 0.01f, null, 1.72f);
             var w = Vector3.Distance(mini[HumanoidBone.LeftUpLeg], mini[HumanoidBone.RightUpLeg]);
