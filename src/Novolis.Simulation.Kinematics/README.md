@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Kinematics
 
 Planar agent motion on XZ using grid occupancy or static-world sphere sweeps.
@@ -38,3 +46,4 @@ var next = PlanarAgent.Move(walls, position, delta, radius: 0.35f, cellSize: 1f,
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
 - [Library boundaries](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/library-boundaries.md)
+

@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Humanoid.Skinning
 
 CPU linear-blend skinning for `Novolis.Simulation.Humanoid` over `Novolis.Math.Geometry.TriangleMesh`,
@@ -87,3 +95,4 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 | `Novolis.Simulation.Humanoid.Physics` | Ragdoll sphere layout |
 | `Novolis.Math.Geometry` | `MeshLod.Decimate` for realtime LODs |
 | `Novolis.Modeling.Import` | Assimp geometry / named skin import |
+

@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation
 
 Installs the core simulation stack (world, view, kinematics, builders, abstractions) in one reference.
@@ -42,3 +50,4 @@ Bundled transitively: Abstractions, World, View, Kinematics, World.Builders.
 
 - [Getting started](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/getting-started.md)
 - [Design](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/design.md)
+

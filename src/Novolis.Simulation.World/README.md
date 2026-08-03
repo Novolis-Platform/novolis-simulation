@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.World
 
 Occupancy grids, bounded heightfields, room interiors, and planar collision helpers.
@@ -40,3 +48,4 @@ var moved = PlanarOccupancy.TryMove(world.Occupancy, position, delta, radius: 0.
 ## More documentation
 
 - [Design](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/design.md)
+

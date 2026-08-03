@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Humanoid.Physics
 
 Adapter between `Novolis.Simulation.Humanoid` and `Novolis.Physics.Joints.RagdollHumanoidPreset`.
@@ -41,3 +49,4 @@ HumanoidRagdollBridge.ApplyWorldPoseToSpheres(world, spheres);
 | `Novolis.Simulation.Humanoid` | Poses, bind frames, bone schema |
 | `Novolis.Physics.Joints` | `RagdollHumanoidPreset`, joint solvers |
 | `Novolis.Simulation.Humanoid.Skinning` | Deform mesh to ragdoll spheres |
+

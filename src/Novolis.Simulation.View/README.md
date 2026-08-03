@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.View
 
 Scene cameras, view poses, and controller rigs (orbit, free-look, tracking, first/third-person character).
@@ -43,3 +51,4 @@ Host apps map Raylib/Silk/Avalonia input into `LookIntent` / `MoveIntent`. Colli
 ## Support
 
 Pre-release platform library. Public API is fully documented with strict XML (`CS1591` enforced).
+

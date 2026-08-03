@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Voxels.Meshing
 
 Face-culled and greedy voxel meshing → `Novolis.Math.Geometry.EditableMesh` / `TriangleMesh`.
@@ -35,3 +43,4 @@ No Rendering/Raylib references — apps upload the mesh to their GPU backend.
 |---------|-------------|
 | `Novolis.Simulation.Voxels` | `ChunkedVoxelWorld` storage |
 | `Novolis.Math.Geometry` | `EditableMesh`, `TriangleMesh` output |
+

@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Tiles
 
 Prison Architect–style 2D build grids: layered tiles, edge walls/doors, room flood-fill, grid A*.
@@ -44,3 +52,4 @@ batch.TouchCell(1, 1);
 |---------|-------------|
 | `Novolis.Simulation.World` | `PlanarOccupancy` for agent movement |
 | `Novolis.Math.Arrays` | Compatible walkability grids |
+

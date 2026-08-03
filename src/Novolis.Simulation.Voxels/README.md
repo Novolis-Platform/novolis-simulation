@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Voxels
 
 Chunked voxel world (16³ `ushort` blocks), streaming, terrain fill, dig/place — storage for Minecraft-clone games.
@@ -38,3 +46,4 @@ Block storage types live in `Novolis.Math.Arrays` (`VoxelChunk`, `ChunkCoord3`).
 |---------|-------------|
 | `Novolis.Simulation.Voxels.Meshing` | Greedy/face-culled mesh generation |
 | `Novolis.Math.Arrays` | `VoxelChunk`, `ChunkCoord3` types |
+

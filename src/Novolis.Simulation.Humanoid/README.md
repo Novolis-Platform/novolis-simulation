@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.Humanoid
 
 Cinema 4D / Unity / Mixamo–style **standard biped** for Novolis: named bones, T-pose bind, FK pose solve, two-bone IK, FABRIK chains, full-body multi-effector helpers, and animation clips. BCL-only (`System.Numerics`).
@@ -81,3 +89,4 @@ Mixamo / Unity Humanoid names (`HumanoidBone`, `HumanoidBoneNames.TryResolve`). 
 | `Novolis.Game.Humanoid` | Clip banks / body masks |
 | `Novolis.Simulation.Kinematics` | Planar XZ agent motion (not IK) |
 | `Novolis.Physics.Joints` | Ragdoll constraint dynamics |
+

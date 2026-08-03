@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-simulation">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Simulation.World.Builders
 
 Mesh builders for heightfields, occupancy columns, and enclosed rooms.
@@ -42,3 +50,4 @@ var collision = result.Collision; // BvhStaticWorld
 ## More documentation
 
 - [Design](https://github.com/Novolis-Platform/novolis-simulation/blob/main/docs/design.md)
+
