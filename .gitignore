@@ -6,3 +6,8 @@ artifacts/
 *.suo
 .DS_Store
 TestResults/
+# JetBrains / Rider
+.idea/
+**/.idea/
+DotSettings.*
+*.DotSettings.user
