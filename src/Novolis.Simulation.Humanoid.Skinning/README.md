@@ -36,7 +36,7 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 
 ```csharp
 using Novolis.Math.Geometry;
-using Novolis.Modeling.Import;
+using Novolis._3D;
 using Novolis.Simulation.Humanoid;
 using Novolis.Simulation.Humanoid.Skinning;
 
@@ -94,5 +94,5 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 | `Novolis.Simulation.Humanoid` | Poses and bind frames |
 | `Novolis.Simulation.Humanoid.Physics` | Ragdoll sphere layout |
 | `Novolis.Math.Geometry` | `MeshLod.Decimate` for realtime LODs |
-| `Novolis.Modeling.Import` | Assimp geometry / named skin import |
+| `Novolis.3D.Import` | Assimp geometry / named skin import |
 
