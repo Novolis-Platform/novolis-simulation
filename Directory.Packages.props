@@ -7,6 +7,6 @@
     <PackageVersion Include="Novolis.Physics.Abstractions" Version="2026.1.*" />
     <PackageVersion Include="Novolis.Physics.Collision.Simple" Version="2026.1.*" />
     <PackageVersion Include="Novolis.Physics.Joints" Version="2026.1.*" />
-    <PackageVersion Include="TUnit" Version="1.44.39" />
+    <PackageVersion Include="TUnit" Version="1.68.17" />
   </ItemGroup>
 </Project>
