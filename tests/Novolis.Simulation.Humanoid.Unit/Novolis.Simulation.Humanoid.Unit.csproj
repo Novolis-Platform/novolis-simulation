@@ -7,9 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TUnit" />
-    <PackageReference Include="Novolis.Math.Geometry" />
-    <PackageReference Include="Novolis.Physics.Joints" />
-    <PackageReference Include="Novolis.Physics.Collision.Simple" />
+    <LibraryReference Include="Novolis.Math.Geometry" />
+    <LibraryReference Include="Novolis.Physics.Joints" />
+    <LibraryReference Include="Novolis.Physics.Collision.Simple" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Novolis.Simulation.Humanoid/Novolis.Simulation.Humanoid.csproj" />

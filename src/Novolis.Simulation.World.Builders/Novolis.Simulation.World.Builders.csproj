@@ -8,9 +8,9 @@
     <Description>Build physics worlds from occupancy grids.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Physics.Collision.Simple" />
-    <PackageReference Include="Novolis.Math.Geometry" />
+    <LibraryReference Include="Novolis.Physics.Collision.Simple" />
+    <LibraryReference Include="Novolis.Math.Geometry" />
     <ProjectReference Include="..\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
-    <PackageReference Include="Novolis.Physics.Abstractions" />
+    <LibraryReference Include="Novolis.Physics.Abstractions" />
   </ItemGroup>
 </Project>

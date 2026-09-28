@@ -6,10 +6,10 @@
     <NovolisStackAnalyzers>false</NovolisStackAnalyzers>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Math.Arrays" />
-    <PackageReference Include="Novolis.Math.Geometry" />
-    <PackageReference Include="Novolis.Physics.Abstractions" />
-    <PackageReference Include="Novolis.Physics.Collision.Simple" />
+    <LibraryReference Include="Novolis.Math.Arrays" />
+    <LibraryReference Include="Novolis.Math.Geometry" />
+    <LibraryReference Include="Novolis.Physics.Abstractions" />
+    <LibraryReference Include="Novolis.Physics.Collision.Simple" />
     <PackageReference Include="TUnit" />
   </ItemGroup>
   <ItemGroup>

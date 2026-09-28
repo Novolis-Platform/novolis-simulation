@@ -8,6 +8,6 @@
     <Description>Chunked voxel world (16³), streaming, terrain fill, dig/place — Minecraft-clone capable storage.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Math.Arrays" />
+    <LibraryReference Include="Novolis.Math.Arrays" />
   </ItemGroup>
 </Project>

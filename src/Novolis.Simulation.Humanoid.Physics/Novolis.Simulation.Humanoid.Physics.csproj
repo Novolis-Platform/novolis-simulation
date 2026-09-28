@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj" />
-    <PackageReference Include="Novolis.Physics.Joints" />
-    <PackageReference Include="Novolis.Physics.Collision.Simple" />
+    <LibraryReference Include="Novolis.Physics.Joints" />
+    <LibraryReference Include="Novolis.Physics.Collision.Simple" />
   </ItemGroup>
 </Project>

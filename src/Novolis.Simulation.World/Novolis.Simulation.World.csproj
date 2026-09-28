@@ -8,7 +8,7 @@
     <Description>Planar occupancy grids, LOS, and collision queries on XZ (+Y up).</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Math.Arrays" />
-    <PackageReference Include="Novolis.Physics.Abstractions" />
+    <LibraryReference Include="Novolis.Math.Arrays" />
+    <LibraryReference Include="Novolis.Physics.Abstractions" />
   </ItemGroup>
 </Project>
