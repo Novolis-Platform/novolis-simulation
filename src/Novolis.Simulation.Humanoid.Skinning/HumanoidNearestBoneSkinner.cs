@@ -231,6 +231,3 @@ public static class HumanoidNearestBoneSkinner
             SkinnedHumanoidMesh.CreateTranslationInverseBinds(bind));
     }
 }
-
-/// <summary>Bone influence keyed by authoring name (Assimp / Mixamo).</summary>
-public readonly record struct NamedBoneWeight(string BoneName, float Weight);

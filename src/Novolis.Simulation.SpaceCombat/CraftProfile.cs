@@ -1,12 +1,5 @@
 namespace Novolis.Simulation.SpaceCombat;
 
-public enum CraftRole
-{
-    Freighter,
-    Fighter,
-    Hostile,
-}
-
 public sealed class CraftProfile
 {
     public string Id { get; init; } = "";
