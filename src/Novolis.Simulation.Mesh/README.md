@@ -6,7 +6,7 @@
 
 # Novolis.Simulation.Mesh
 
-DTN/relay mesh kernel: publish, flood, TTL, mailbox, feeds, and pathfinding for delayed packet traffic.
+DTN / relay packet mesh — not triangle geometry. Publish, flood, TTL, mailbox, feeds, and pathfinding for delayed packet traffic.
 
 ## Install
 

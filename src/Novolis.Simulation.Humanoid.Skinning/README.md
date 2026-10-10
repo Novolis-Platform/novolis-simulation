@@ -34,7 +34,7 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 
 ```csharp
 using Novolis.Math.Geometry;
-using Novolis.ThreeD;
+using Novolis.Modeling;
 using Novolis.Simulation.Humanoid;
 using Novolis.Simulation.Humanoid.Skinning;
 
@@ -83,7 +83,7 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 | `HumanoidAdaptiveBody` | `SphereCount=11`; `CreateFromRagdollBind`; `AdaptToMesh` |
 | `HumanoidMeshAligner` | Fit unrigged mesh to bind height / feet |
 | `HumanoidNearestBoneSkinner` | Auto-skin + Mixamo name map |
-| `NamedBoneWeight` | Author bone-name influence |
+| `NamedBoneWeight` | Author bone-name influence (`Novolis.Math.Geometry`) |
 
 ## Related
 
@@ -92,5 +92,5 @@ var deformed = CpuSkinDeformer.DeformToMesh(skin, worldPose);
 | `Novolis.Simulation.Humanoid` | Poses and bind frames |
 | `Novolis.Simulation.Humanoid.Physics` | Ragdoll sphere layout |
 | `Novolis.Math.Geometry` | `MeshLod.Decimate` for realtime LODs |
-| `Novolis.ThreeD.Import.Assimp` | Assimp geometry / named skin import |
+| `Novolis.Modeling.Import.Assimp` | Assimp geometry / named skin import |
 

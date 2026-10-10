@@ -5,6 +5,6 @@
     <AssemblyName>Novolis.Simulation.Mesh</AssemblyName>
     <PackageId>Novolis.Simulation.Mesh</PackageId>
     <IsPackable>true</IsPackable>
-    <Description>DTN/relay mesh kernel: publish, flood, TTL, mailbox, and pathfinding for delayed packet traffic.</Description>
+    <Description>DTN / relay packet mesh (not triangle geometry): publish, flood, TTL, mailbox, and pathfinding for delayed packet traffic.</Description>
   </PropertyGroup>
 </Project>

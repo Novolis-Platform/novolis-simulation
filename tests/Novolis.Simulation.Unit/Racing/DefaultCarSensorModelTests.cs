@@ -221,7 +221,7 @@ public sealed class DefaultCarSensorModelTests
     }
 
     [Test]
-    public async Task Read_TwoDifferentCars_ProduceDifferentSpeedValues()
+    public async Task Read_PlanarifferentCars_ProduceDifferentSpeedValues()
     {
         var car1 = MakeCar(speed: 0.0);
         var car2 = MakeCar(speed: 5.0);

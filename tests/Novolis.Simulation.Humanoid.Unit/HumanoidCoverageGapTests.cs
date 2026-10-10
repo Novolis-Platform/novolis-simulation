@@ -1,4 +1,5 @@
 using System.Numerics;
+using Novolis.Math.Geometry;
 using Novolis.Simulation.Humanoid;
 using Novolis.Simulation.Humanoid.Skinning;
 

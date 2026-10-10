@@ -81,6 +81,9 @@ For NuGet.org and Visual Studio, the **embedded** README.md inside each package 
 | `Novolis.Simulation.Voxels.Meshing` | Face-culled / greedy mesh → `Math.Geometry` (no GPU) |
 | `Novolis.Simulation.Kinematics` | `PlanarAgent.Move` (grid and/or BVH) |
 | `Novolis.Simulation.World.Builders` | `OccupancyColumnMeshBuilder` → `BvhStaticWorld` |
+| `Novolis.Simulation.Mesh` | DTN / relay packet mesh (not triangle geometry) |
+| `Novolis.Simulation.SpaceCombat` | Headless arcade flight / bolts / missions |
+| `Novolis.Simulation.Replay` | Recording and replay |
 | `Novolis.Simulation` | Meta package referencing core facets |
 
 ## Build
