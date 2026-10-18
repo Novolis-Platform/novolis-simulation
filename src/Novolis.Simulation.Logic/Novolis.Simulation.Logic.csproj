@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisDirectory)..\..\build\Novolis.Simulation.Packaging.props" />
+  <PropertyGroup>
+    <RootNamespace>Novolis.Simulation.Logic</RootNamespace>
+    <AssemblyName>Novolis.Simulation.Logic</AssemblyName>
+    <PackageId>Novolis.Simulation.Logic</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Deterministic, framework-neutral digital logic circuits for Novolis.</Description>
+    <PackageTags>simulation;logic;circuits;digital;gates</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

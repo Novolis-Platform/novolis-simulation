@@ -10,6 +10,7 @@
     <Project Path="src/Novolis.Simulation.SpaceCombat/Novolis.Simulation.SpaceCombat.csproj" />
 
     <Project Path="src/Novolis.Simulation.Replay/Novolis.Simulation.Replay.csproj" />
+    <Project Path="src/Novolis.Simulation.Logic/Novolis.Simulation.Logic.csproj" />
     <Project Path="src/Novolis.Simulation.Mesh/Novolis.Simulation.Mesh.csproj" />
     <Project Path="src/Novolis.Simulation.Tiles/Novolis.Simulation.Tiles.csproj" />
     <Project Path="src/Novolis.Simulation.Voxels/Novolis.Simulation.Voxels.csproj" />
@@ -21,6 +22,7 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Simulation.Unit/Novolis.Simulation.Unit.csproj" />
+    <Project Path="tests/Novolis.Simulation.Logic.Unit/Novolis.Simulation.Logic.Unit.csproj" />
     <Project Path="tests/Novolis.Simulation.Humanoid.Unit/Novolis.Simulation.Humanoid.Unit.csproj" />
     </Folder>
 </Solution>
