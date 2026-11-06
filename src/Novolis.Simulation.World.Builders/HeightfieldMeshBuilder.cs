@@ -12,7 +12,8 @@ public static class HeightfieldMeshBuilder
     /// <summary>Builds the configured instance.</summary>
     public static HeightfieldBuildResult Build(IHeightSampler sampler, WorldExtentOptions options)
     {
-        var extent = options.ExtentMeters;
+        var extentX = options.ExtentMeters;
+        var extentZ = options.ExtentNorthMeters > 0f ? options.ExtentNorthMeters : extentX;
         var collisionCells = options.CollisionCells;
         var drawCells = options.DrawCells;
 
@@ -22,8 +23,8 @@ public static class HeightfieldMeshBuilder
         for (var z = 0; z <= collisionCells; z++)
         for (var x = 0; x <= collisionCells; x++)
         {
-            var fx = x / (float)collisionCells * extent;
-            var fz = z / (float)collisionCells * extent;
+            var fx = x / (float)collisionCells * extentX;
+            var fz = z / (float)collisionCells * extentZ;
             verts[z * (collisionCells + 1) + x] = new Vector3(fx, sampler.SampleHeight(fx, fz), fz);
         }
 
@@ -48,8 +49,8 @@ public static class HeightfieldMeshBuilder
         for (var z = 0; z <= drawCells; z++)
         for (var x = 0; x <= drawCells; x++)
         {
-            var fx = x / (float)drawCells * extent;
-            var fz = z / (float)drawCells * extent;
+            var fx = x / (float)drawCells * extentX;
+            var fz = z / (float)drawCells * extentZ;
             drawVertices[z * (drawCells + 1) + x] = new Vector3(fx, sampler.SampleHeight(fx, fz), fz);
         }
 
