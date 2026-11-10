@@ -15,6 +15,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Camera/motor tick loops are a poor fit for NOV2301 advisory heuristics. -->
+    <NovolisReadabilityComplexity>false</NovolisReadabilityComplexity>
   </PropertyGroup>
 
   <PropertyGroup Label="Local NuGet feed">
